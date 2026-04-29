@@ -1,0 +1,40 @@
+A student in an introductory programming course was given this task:
+{task}
+
+They submitted this code:
+
+```python
+{code}
+```
+
+Pedagogical reference implementation:
+This is one valid example, not the only correct solution.
+Alternative implementations may be correct if they satisfy the expected behaviour, test cases, and assessment criteria.
+
+Rationale for this reference implementation:
+{reference_rationale}
+
+```python
+{reference_solution}
+```
+
+Functional test results for the student's code:
+These test results define expected behaviour for the task, but they are not the only basis for feedback.
+{test_results}
+
+Software assessment criteria:
+{software_criteria}
+
+Feedback quality criteria:
+{feedback_criteria}
+
+Write feedback directly to the student using "you" and "your code".
+Do not refer to the learner as "the student".
+Focus first on the most important issue.
+Assess the student's code against the expected behaviour, test results, and criteria, not by requiring it to match the reference implementation exactly.
+If the code passes all tests and solves the task correctly, do not invent a correctness problem.
+If the solution is already correct, acknowledge this clearly and only suggest improvements that are pedagogically useful.
+Avoid unnecessary optimisation suggestions unless they directly improve clarity, correctness, or learning.
+Read the full code carefully, including preprocessing steps such as case conversion, before identifying correctness problems.
+Only mention a problem if it is supported by the code behaviour, test results, or assessment criteria.
+Keep the feedback to 3–5 sentences in plain language.

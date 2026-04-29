@@ -1,0 +1,8 @@
+#!/bin/sh
+'''exec' "/Users/kisansrirangan/Library/CloudStorage/OneDrive-UniversitetetiAgder/IKT590-G 26V Master's Thesis/Prototype/.venv/bin/python3" "$0" "$@"
+' '''
+import sys
+from openai.cli import main
+if __name__ == '__main__':
+    sys.argv[0] = sys.argv[0].removesuffix('.exe')
+    sys.exit(main())

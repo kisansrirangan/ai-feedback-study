@@ -1,0 +1,1680 @@
+[
+  {
+    "timestamp": "2026-04-29T00:34:51.884629",
+    "participant_id": "P928818",
+    "model_provider": "OpenAI API",
+    "model_name": "gpt-4o-mini-2024-07-18",
+    "model_temperature": 0.2,
+    "max_tokens": 350,
+    "task_id": "count_vowels",
+    "task_title": "Count the Vowels",
+    "task_description": "Write a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`",
+    "reference_implementation_rationale": "This reference implementation was selected because it is pedagogically simple, uses explicit control flow suitable for introductory programming, and clearly shows the expected behaviour of the task.\n\nIt is not treated as the only valid solution. Alternative implementations may be correct if they satisfy the expected behaviour, predefined functional test cases, and software assessment criteria.",
+    "reference_implementation": "def count_vowels(text):\n    vowels = \"aeiouAEIOU\"\n    count = 0\n    for character in text:\n        if character in vowels:\n            count += 1\n    return count",
+    "software_assessment_criteria": "The student's code should be assessed against these software assessment criteria:\n\n1. Correctness\n   - Defines a function named `count_vowels`.\n   - Accepts one string argument.\n   - Returns the number of vowels in the input string.\n   - Counts both lowercase and uppercase vowels.\n   - Handles strings with no vowels and empty strings.\n\n2. Code readability\n   - Uses clear and understandable control flow.\n   - Avoids unnecessary complexity.\n   - Uses meaningful variable names where possible.\n\n3. Robustness and task alignment\n   - Does not rely only on the exact example inputs.\n   - Returns the result instead of only printing it.\n   - Solves the task as specified.",
+    "feedback_quality_criteria": "The generated feedback should be assessed against these feedback quality criteria:\n\n1. Accuracy\n   - Correctly identifies real strengths and weaknesses in the student's code.\n   - Does not invent errors when the code is correct.\n\n2. Specificity\n   - Refers to concrete aspects of the submitted code.\n   - Avoids overly generic feedback.\n\n3. Actionability\n   - Helps the student understand what to improve next.\n   - Gives clear and practical guidance.\n\n4. Understandability\n   - Uses plain language suitable for an introductory programming student.\n   - Avoids unnecessary technical complexity.\n\n5. Pedagogical usefulness\n   - Supports learning rather than only judging the answer.\n   - Prioritises the most important issue first.",
+    "test_cases": [
+      {
+        "input": "hello",
+        "expected": 2,
+        "reason": "basic lowercase word"
+      },
+      {
+        "input": "APPLE",
+        "expected": 2,
+        "reason": "uppercase vowels must be counted"
+      },
+      {
+        "input": "xyz",
+        "expected": 0,
+        "reason": "word with no vowels"
+      },
+      {
+        "input": "Education",
+        "expected": 5,
+        "reason": "mixed-case realistic word"
+      },
+      {
+        "input": "",
+        "expected": 0,
+        "reason": "empty string edge case"
+      },
+      {
+        "input": "AeIoU",
+        "expected": 5,
+        "reason": "all vowels with mixed case"
+      }
+    ],
+    "student_code": "def count_vowels(text):\n    banana = 123\n    pizza = \"hello\"\n    return banana",
+    "pre_feedback_reflection": "This solution does not actually solve the task. I only returned a fixed number and did not process the input string, so I know it will fail for most test cases.",
+    "test_results": {
+      "status": "completed",
+      "summary": "Passed 0 of 6 tests.",
+      "passed": 0,
+      "total": 6,
+      "results": [
+        {
+          "input": "hello",
+          "expected": 2,
+          "actual": 123,
+          "passed": false,
+          "reason": "basic lowercase word"
+        },
+        {
+          "input": "APPLE",
+          "expected": 2,
+          "actual": 123,
+          "passed": false,
+          "reason": "uppercase vowels must be counted"
+        },
+        {
+          "input": "xyz",
+          "expected": 0,
+          "actual": 123,
+          "passed": false,
+          "reason": "word with no vowels"
+        },
+        {
+          "input": "Education",
+          "expected": 5,
+          "actual": 123,
+          "passed": false,
+          "reason": "mixed-case realistic word"
+        },
+        {
+          "input": "",
+          "expected": 0,
+          "actual": 123,
+          "passed": false,
+          "reason": "empty string edge case"
+        },
+        {
+          "input": "AeIoU",
+          "expected": 5,
+          "actual": 123,
+          "passed": false,
+          "reason": "all vowels with mixed case"
+        }
+      ]
+    },
+    "feedback_order": "enhanced_first",
+    "label_a": "criteria_enhanced_prompt",
+    "label_b": "baseline_minimal_prompt",
+    "baseline_prompt": "A student in an introductory programming course was given this task:\nWrite a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`\n\nThey submitted this code:\n\n```python\ndef count_vowels(text):\n    banana = 123\n    pizza = \"hello\"\n    return banana\n```\n\nPlease provide feedback on the student's code. Keep it to 3–5 sentences in plain language.",
+    "enhanced_prompt": "A student in an introductory programming course was given this task:\nWrite a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`\n\nThey submitted this code:\n\n```python\ndef count_vowels(text):\n    banana = 123\n    pizza = \"hello\"\n    return banana\n```\n\nPedagogical reference implementation:\nThis is one valid reference implementation. Do not treat it as the only correct solution.\nAlternative implementations may be correct if they satisfy the expected behaviour, test cases, and assessment criteria.\n\nRationale for this reference implementation:\nThis reference implementation was selected because it is pedagogically simple, uses explicit control flow suitable for introductory programming, and clearly shows the expected behaviour of the task.\n\nIt is not treated as the only valid solution. Alternative implementations may be correct if they satisfy the expected behaviour, predefined functional test cases, and software assessment criteria.\n\n```python\ndef count_vowels(text):\n    vowels = \"aeiouAEIOU\"\n    count = 0\n    for character in text:\n        if character in vowels:\n            count += 1\n    return count\n```\n\nFunctional test results for the student's code:\nThese test results define expected behaviour for the task, but they are not the only basis for feedback.\nPassed 0 of 6 tests.\n- FAIL: input='hello', expected=2, actual=123. Reason: basic lowercase word\n- FAIL: input='APPLE', expected=2, actual=123. Reason: uppercase vowels must be counted\n- FAIL: input='xyz', expected=0, actual=123. Reason: word with no vowels\n- FAIL: input='Education', expected=5, actual=123. Reason: mixed-case realistic word\n- FAIL: input='', expected=0, actual=123. Reason: empty string edge case\n- FAIL: input='AeIoU', expected=5, actual=123. Reason: all vowels with mixed case\n\nSoftware assessment criteria:\nThe student's code should be assessed against these software assessment criteria:\n\n1. Correctness\n   - Defines a function named `count_vowels`.\n   - Accepts one string argument.\n   - Returns the number of vowels in the input string.\n   - Counts both lowercase and uppercase vowels.\n   - Handles strings with no vowels and empty strings.\n\n2. Code readability\n   - Uses clear and understandable control flow.\n   - Avoids unnecessary complexity.\n   - Uses meaningful variable names where possible.\n\n3. Robustness and task alignment\n   - Does not rely only on the exact example inputs.\n   - Returns the result instead of only printing it.\n   - Solves the task as specified.\n\nFeedback quality criteria:\nThe generated feedback should be assessed against these feedback quality criteria:\n\n1. Accuracy\n   - Correctly identifies real strengths and weaknesses in the student's code.\n   - Does not invent errors when the code is correct.\n\n2. Specificity\n   - Refers to concrete aspects of the submitted code.\n   - Avoids overly generic feedback.\n\n3. Actionability\n   - Helps the student understand what to improve next.\n   - Gives clear and practical guidance.\n\n4. Understandability\n   - Uses plain language suitable for an introductory programming student.\n   - Avoids unnecessary technical complexity.\n\n5. Pedagogical usefulness\n   - Supports learning rather than only judging the answer.\n   - Prioritises the most important issue first.\n\nWrite feedback for the student. Focus first on the most important issue. \nAssess the student's code against the expected behaviour, test results, and criteria, not by requiring it to match the reference implementation exactly. \nIf the code passes all tests and solves the task correctly, do not invent a correctness problem. \nInstead, mention that the solution appears correct and suggest the most useful improvement. \nKeep the feedback to 3–5 sentences in plain language.",
+    "feedback_a": "Your submission does not meet the requirements of the task. The function you wrote does not count vowels; instead, it returns a fixed number (123) and does not use the input string at all. To improve, focus on iterating through each character in the input string and checking if it is a vowel (either lowercase or uppercase). Remember to return the count of vowels instead of a fixed value. This will help your function work correctly and pass the tests.",
+    "feedback_b": "The student's code does not fulfill the task requirements, as it does not count vowels in the input string. Instead, it defines unnecessary variables (`banana` and `pizza`) and returns a fixed value (123) instead of the vowel count. To complete the task, the function should iterate through the input string, check for vowels (both lowercase and uppercase), and return the total count. I recommend focusing on the logic for identifying vowels and using a loop or a comprehension to count them.",
+    "ratings_a": {
+      "understandability": 4,
+      "accuracy": 4,
+      "specificity": 4,
+      "actionability": 4,
+      "usefulness": 4,
+      "pedagogical_value": 4
+    },
+    "ratings_b": {
+      "understandability": 4,
+      "accuracy": 4,
+      "specificity": 5,
+      "actionability": 4,
+      "usefulness": 4,
+      "pedagogical_value": 4
+    },
+    "preferred_feedback": "Feedback B",
+    "perceived_difference": "Feedback B is slightly more specific because it refers directly to the unnecessary variables in the code, which makes the explanation more connected to the submitted solution.",
+    "missing_or_problematic": "Both feedback versions are useful, but they are still very similar in structure and guidance. A clearer pedagogical difference would make comparison easier.",
+    "comment": "Both feedback versions clearly explain that the current solution does not solve the task and suggest the next logical step."
+  },
+  {
+    "timestamp": "2026-04-29T00:40:41.328842",
+    "participant_id": "P732855",
+    "model_provider": "OpenAI API",
+    "model_name": "gpt-4o-mini-2024-07-18",
+    "model_temperature": 0.2,
+    "max_tokens": 350,
+    "task_id": "count_vowels",
+    "task_title": "Count the Vowels",
+    "task_description": "Write a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`",
+    "reference_implementation_rationale": "This reference implementation was selected because it is pedagogically simple, uses explicit control flow suitable for introductory programming, and clearly shows the expected behaviour of the task.\n\nIt is not treated as the only valid solution. Alternative implementations may be correct if they satisfy the expected behaviour, predefined functional test cases, and software assessment criteria.",
+    "reference_implementation": "def count_vowels(text):\n    vowels = \"aeiouAEIOU\"\n    count = 0\n    for character in text:\n        if character in vowels:\n            count += 1\n    return count",
+    "software_assessment_criteria": "The student's code should be assessed against these software assessment criteria:\n\n1. Correctness\n   - Defines a function named `count_vowels`.\n   - Accepts one string argument.\n   - Returns the number of vowels in the input string.\n   - Counts both lowercase and uppercase vowels.\n   - Handles strings with no vowels and empty strings.\n\n2. Code readability\n   - Uses clear and understandable control flow.\n   - Avoids unnecessary complexity.\n   - Uses meaningful variable names where possible.\n\n3. Robustness and task alignment\n   - Does not rely only on the exact example inputs.\n   - Returns the result instead of only printing it.\n   - Solves the task as specified.",
+    "feedback_quality_criteria": "The generated feedback should be assessed against these feedback quality criteria:\n\n1. Accuracy\n   - Correctly identifies real strengths and weaknesses in the student's code.\n   - Does not invent errors when the code is correct.\n\n2. Specificity\n   - Refers to concrete aspects of the submitted code.\n   - Avoids overly generic feedback.\n\n3. Actionability\n   - Helps the student understand what to improve next.\n   - Gives clear and practical guidance.\n\n4. Understandability\n   - Uses plain language suitable for an introductory programming student.\n   - Avoids unnecessary technical complexity.\n\n5. Pedagogical usefulness\n   - Supports learning rather than only judging the answer.\n   - Prioritises the most important issue first.",
+    "test_cases": [
+      {
+        "input": "hello",
+        "expected": 2,
+        "reason": "basic lowercase word"
+      },
+      {
+        "input": "APPLE",
+        "expected": 2,
+        "reason": "uppercase vowels must be counted"
+      },
+      {
+        "input": "xyz",
+        "expected": 0,
+        "reason": "word with no vowels"
+      },
+      {
+        "input": "Education",
+        "expected": 5,
+        "reason": "mixed-case realistic word"
+      },
+      {
+        "input": "",
+        "expected": 0,
+        "reason": "empty string edge case"
+      },
+      {
+        "input": "AeIoU",
+        "expected": 5,
+        "reason": "all vowels with mixed case"
+      }
+    ],
+    "student_code": "def count_vowels(text):\n    return 0",
+    "pre_feedback_reflection": "I am not sure if this is correct. I added variables and returned one of them, but I did not yet implement logic for counting vowels.",
+    "test_results": {
+      "status": "completed",
+      "summary": "Passed 2 of 6 tests.",
+      "passed": 2,
+      "total": 6,
+      "results": [
+        {
+          "input": "hello",
+          "expected": 2,
+          "actual": 0,
+          "passed": false,
+          "reason": "basic lowercase word"
+        },
+        {
+          "input": "APPLE",
+          "expected": 2,
+          "actual": 0,
+          "passed": false,
+          "reason": "uppercase vowels must be counted"
+        },
+        {
+          "input": "xyz",
+          "expected": 0,
+          "actual": 0,
+          "passed": true,
+          "reason": "word with no vowels"
+        },
+        {
+          "input": "Education",
+          "expected": 5,
+          "actual": 0,
+          "passed": false,
+          "reason": "mixed-case realistic word"
+        },
+        {
+          "input": "",
+          "expected": 0,
+          "actual": 0,
+          "passed": true,
+          "reason": "empty string edge case"
+        },
+        {
+          "input": "AeIoU",
+          "expected": 5,
+          "actual": 0,
+          "passed": false,
+          "reason": "all vowels with mixed case"
+        }
+      ]
+    },
+    "feedback_order": "enhanced_first",
+    "label_a": "criteria_enhanced_prompt",
+    "label_b": "baseline_minimal_prompt",
+    "baseline_prompt": "A student in an introductory programming course was given this task:\nWrite a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`\n\nThey submitted this code:\n\n```python\ndef count_vowels(text):\n    return 0\n```\n\nPlease provide feedback on the student's code. Keep it to 3–5 sentences in plain language.",
+    "enhanced_prompt": "A student in an introductory programming course was given this task:\nWrite a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`\n\nThey submitted this code:\n\n```python\ndef count_vowels(text):\n    return 0\n```\n\nPedagogical reference implementation:\nThis is one valid reference implementation. Do not treat it as the only correct solution.\nAlternative implementations may be correct if they satisfy the expected behaviour, test cases, and assessment criteria.\n\nRationale for this reference implementation:\nThis reference implementation was selected because it is pedagogically simple, uses explicit control flow suitable for introductory programming, and clearly shows the expected behaviour of the task.\n\nIt is not treated as the only valid solution. Alternative implementations may be correct if they satisfy the expected behaviour, predefined functional test cases, and software assessment criteria.\n\n```python\ndef count_vowels(text):\n    vowels = \"aeiouAEIOU\"\n    count = 0\n    for character in text:\n        if character in vowels:\n            count += 1\n    return count\n```\n\nFunctional test results for the student's code:\nThese test results define expected behaviour for the task, but they are not the only basis for feedback.\nPassed 2 of 6 tests.\n- FAIL: input='hello', expected=2, actual=0. Reason: basic lowercase word\n- FAIL: input='APPLE', expected=2, actual=0. Reason: uppercase vowels must be counted\n- PASS: input='xyz', expected=0, actual=0. Reason: word with no vowels\n- FAIL: input='Education', expected=5, actual=0. Reason: mixed-case realistic word\n- PASS: input='', expected=0, actual=0. Reason: empty string edge case\n- FAIL: input='AeIoU', expected=5, actual=0. Reason: all vowels with mixed case\n\nSoftware assessment criteria:\nThe student's code should be assessed against these software assessment criteria:\n\n1. Correctness\n   - Defines a function named `count_vowels`.\n   - Accepts one string argument.\n   - Returns the number of vowels in the input string.\n   - Counts both lowercase and uppercase vowels.\n   - Handles strings with no vowels and empty strings.\n\n2. Code readability\n   - Uses clear and understandable control flow.\n   - Avoids unnecessary complexity.\n   - Uses meaningful variable names where possible.\n\n3. Robustness and task alignment\n   - Does not rely only on the exact example inputs.\n   - Returns the result instead of only printing it.\n   - Solves the task as specified.\n\nFeedback quality criteria:\nThe generated feedback should be assessed against these feedback quality criteria:\n\n1. Accuracy\n   - Correctly identifies real strengths and weaknesses in the student's code.\n   - Does not invent errors when the code is correct.\n\n2. Specificity\n   - Refers to concrete aspects of the submitted code.\n   - Avoids overly generic feedback.\n\n3. Actionability\n   - Helps the student understand what to improve next.\n   - Gives clear and practical guidance.\n\n4. Understandability\n   - Uses plain language suitable for an introductory programming student.\n   - Avoids unnecessary technical complexity.\n\n5. Pedagogical usefulness\n   - Supports learning rather than only judging the answer.\n   - Prioritises the most important issue first.\n\nWrite feedback for the student. Focus first on the most important issue. \nAssess the student's code against the expected behaviour, test results, and criteria, not by requiring it to match the reference implementation exactly. \nIf the code passes all tests and solves the task correctly, do not invent a correctness problem. \nInstead, mention that the solution appears correct and suggest the most useful improvement. \nKeep the feedback to 3–5 sentences in plain language.",
+    "feedback_a": "Your submission for the `count_vowels` function currently returns `0` for all inputs, which means it doesn't count any vowels as required. To fix this, you need to iterate through each character in the input string and check if it is a vowel (either lowercase or uppercase). You can keep a count of how many vowels you find and return that count at the end. Remember to use meaningful variable names and clear control flow to make your code easy to read. Once you implement these changes, your function should pass all the tests.",
+    "feedback_b": "Your code currently returns 0 for any input, which doesn't fulfill the task of counting vowels in the string. To complete the function, you'll need to iterate through each character in the input string and check if it's a vowel (either lowercase or uppercase). You can use a counter to keep track of the number of vowels you find and then return that count. Make sure to test your function with different strings to ensure it works correctly!",
+    "ratings_a": {
+      "understandability": 4,
+      "accuracy": 4,
+      "specificity": 4,
+      "actionability": 4,
+      "usefulness": 4,
+      "pedagogical_value": 4
+    },
+    "ratings_b": {
+      "understandability": 5,
+      "accuracy": 4,
+      "specificity": 4,
+      "actionability": 5,
+      "usefulness": 5,
+      "pedagogical_value": 4
+    },
+    "preferred_feedback": "Feedback B",
+    "perceived_difference": "Feedback B gives slightly clearer step-by-step guidance by suggesting both a counter and testing with different strings, which makes the next improvement easier to understand.",
+    "missing_or_problematic": "Both feedback versions are useful, but Feedback A includes some extra advice about readability that may be less important before solving the main logic problem.",
+    "comment": "Both feedback versions clearly explain that returning 0 for all inputs does not solve the task."
+  },
+  {
+    "timestamp": "2026-04-29T00:52:25.716250",
+    "participant_id": "P724318",
+    "model_provider": "OpenAI API",
+    "model_name": "gpt-4o-mini-2024-07-18",
+    "model_temperature": 0.2,
+    "max_tokens": 350,
+    "task_id": "count_vowels",
+    "task_title": "Count the Vowels",
+    "task_description": "Write a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`",
+    "reference_implementation_rationale": "This reference implementation was selected because it is pedagogically simple, uses explicit control flow suitable for introductory programming, and clearly shows the expected behaviour of the task.\n\nIt is not treated as the only valid solution. Alternative implementations may be correct if they satisfy the expected behaviour, predefined functional test cases, and software assessment criteria.",
+    "reference_implementation": "def count_vowels(text):\n    vowels = \"aeiouAEIOU\"\n    count = 0\n    for character in text:\n        if character in vowels:\n            count += 1\n    return count",
+    "software_assessment_criteria": "The student's code should be assessed against these software assessment criteria:\n\n1. Correctness\n   - Defines a function named `count_vowels`.\n   - Accepts one string argument.\n   - Returns the number of vowels in the input string.\n   - Counts both lowercase and uppercase vowels.\n   - Handles strings with no vowels and empty strings.\n\n2. Code readability\n   - Uses clear and understandable control flow.\n   - Avoids unnecessary complexity.\n   - Uses meaningful variable names where possible.\n\n3. Robustness and task alignment\n   - Does not rely only on the exact example inputs.\n   - Returns the result instead of only printing it.\n   - Solves the task as specified.",
+    "feedback_quality_criteria": "The generated feedback should be assessed against these feedback quality criteria:\n\n1. Accuracy\n   - Correctly identifies real strengths and weaknesses in the student's code.\n   - Does not invent errors when the code is correct.\n\n2. Specificity\n   - Refers to concrete aspects of the submitted code.\n   - Avoids overly generic feedback.\n\n3. Actionability\n   - Helps the student understand what to improve next.\n   - Gives clear and practical guidance.\n\n4. Understandability\n   - Uses plain language suitable for an introductory programming student.\n   - Avoids unnecessary technical complexity.\n\n5. Pedagogical usefulness\n   - Supports learning rather than only judging the answer.\n   - Prioritises the most important issue first.",
+    "test_cases": [
+      {
+        "input": "hello",
+        "expected": 2,
+        "reason": "basic lowercase word"
+      },
+      {
+        "input": "APPLE",
+        "expected": 2,
+        "reason": "uppercase vowels must be counted"
+      },
+      {
+        "input": "xyz",
+        "expected": 0,
+        "reason": "word with no vowels"
+      },
+      {
+        "input": "Education",
+        "expected": 5,
+        "reason": "mixed-case realistic word"
+      },
+      {
+        "input": "",
+        "expected": 0,
+        "reason": "empty string edge case"
+      },
+      {
+        "input": "AeIoU",
+        "expected": 5,
+        "reason": "all vowels with mixed case"
+      }
+    ],
+    "student_code": "function count_vowels(text) {\n    let count = 0;\n    return count;\n}",
+    "pre_feedback_reflection": "I used function syntax and initialized a counter, but I am unsure whether this matches Python syntax and fully solves the task.",
+    "test_results": {
+      "status": "failed",
+      "summary": "The submitted code could not be executed: invalid syntax (<string>, line 1)",
+      "passed": 0,
+      "total": 6,
+      "results": []
+    },
+    "feedback_order": "enhanced_first",
+    "label_a": "criteria_enhanced_prompt",
+    "label_b": "baseline_minimal_prompt",
+    "baseline_prompt": "A student in an introductory programming course was given this task:\nWrite a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`\n\nThey submitted this code:\n\n```python\nfunction count_vowels(text) {\n    let count = 0;\n    return count;\n}\n```\n\nPlease provide feedback on the student's code. Keep it to 3–5 sentences in plain language.",
+    "enhanced_prompt": "A student in an introductory programming course was given this task:\nWrite a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`\n\nThey submitted this code:\n\n```python\nfunction count_vowels(text) {\n    let count = 0;\n    return count;\n}\n```\n\nPedagogical reference implementation:\nThis is one valid reference implementation. Do not treat it as the only correct solution.\nAlternative implementations may be correct if they satisfy the expected behaviour, test cases, and assessment criteria.\n\nRationale for this reference implementation:\nThis reference implementation was selected because it is pedagogically simple, uses explicit control flow suitable for introductory programming, and clearly shows the expected behaviour of the task.\n\nIt is not treated as the only valid solution. Alternative implementations may be correct if they satisfy the expected behaviour, predefined functional test cases, and software assessment criteria.\n\n```python\ndef count_vowels(text):\n    vowels = \"aeiouAEIOU\"\n    count = 0\n    for character in text:\n        if character in vowels:\n            count += 1\n    return count\n```\n\nFunctional test results for the student's code:\nThese test results define expected behaviour for the task, but they are not the only basis for feedback.\nThe submitted code could not be executed: invalid syntax (<string>, line 1)\n\nSoftware assessment criteria:\nThe student's code should be assessed against these software assessment criteria:\n\n1. Correctness\n   - Defines a function named `count_vowels`.\n   - Accepts one string argument.\n   - Returns the number of vowels in the input string.\n   - Counts both lowercase and uppercase vowels.\n   - Handles strings with no vowels and empty strings.\n\n2. Code readability\n   - Uses clear and understandable control flow.\n   - Avoids unnecessary complexity.\n   - Uses meaningful variable names where possible.\n\n3. Robustness and task alignment\n   - Does not rely only on the exact example inputs.\n   - Returns the result instead of only printing it.\n   - Solves the task as specified.\n\nFeedback quality criteria:\nThe generated feedback should be assessed against these feedback quality criteria:\n\n1. Accuracy\n   - Correctly identifies real strengths and weaknesses in the student's code.\n   - Does not invent errors when the code is correct.\n\n2. Specificity\n   - Refers to concrete aspects of the submitted code.\n   - Avoids overly generic feedback.\n\n3. Actionability\n   - Helps the student understand what to improve next.\n   - Gives clear and practical guidance.\n\n4. Understandability\n   - Uses plain language suitable for an introductory programming student.\n   - Avoids unnecessary technical complexity.\n\n5. Pedagogical usefulness\n   - Supports learning rather than only judging the answer.\n   - Prioritises the most important issue first.\n\nWrite feedback for the student. Focus first on the most important issue. \nAssess the student's code against the expected behaviour, test results, and criteria, not by requiring it to match the reference implementation exactly. \nIf the code passes all tests and solves the task correctly, do not invent a correctness problem. \nInstead, mention that the solution appears correct and suggest the most useful improvement. \nKeep the feedback to 3–5 sentences in plain language.",
+    "feedback_a": "Your submitted code has a syntax error because it uses JavaScript syntax instead of Python. In Python, you need to define a function using the `def` keyword, not `function`. Additionally, your code currently does not count vowels or return any value. To improve, make sure to implement the logic for counting vowels as shown in the reference implementation. Focus on checking each character in the string against a list of vowels and incrementing a count accordingly. This will help you meet the task requirements effectively.",
+    "feedback_b": "It looks like the student submitted code in JavaScript instead of Python, which is not what the task required. The function name and structure are incorrect for Python, and it doesn't actually count any vowels. To complete the task, they should define a Python function using the `def` keyword, iterate through the string, check for vowels, and increment the count accordingly. Additionally, they should ensure that both uppercase and lowercase vowels are considered.",
+    "ratings_a": {
+      "understandability": 4,
+      "accuracy": 4,
+      "specificity": 4,
+      "actionability": 4,
+      "usefulness": 4,
+      "pedagogical_value": 3
+    },
+    "ratings_b": {
+      "understandability": 5,
+      "accuracy": 5,
+      "specificity": 5,
+      "actionability": 5,
+      "usefulness": 5,
+      "pedagogical_value": 5
+    },
+    "preferred_feedback": "Feedback B",
+    "perceived_difference": "Feedback B explains both the language issue and the missing program logic more clearly, while Feedback A focuses more narrowly on syntax.",
+    "missing_or_problematic": "Feedback A refers to the reference implementation, which may make the student think there is only one correct way to solve the task.",
+    "comment": "Feedback B gives a more complete explanation by connecting syntax, task requirements, and next steps."
+  },
+  {
+    "timestamp": "2026-04-29T00:56:59.602343",
+    "participant_id": "P361324",
+    "model_provider": "OpenAI API",
+    "model_name": "gpt-4o-mini-2024-07-18",
+    "model_temperature": 0.2,
+    "max_tokens": 350,
+    "task_id": "count_vowels",
+    "task_title": "Count the Vowels",
+    "task_description": "Write a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`",
+    "reference_implementation_rationale": "This reference implementation was selected because it is pedagogically simple, uses explicit control flow suitable for introductory programming, and clearly shows the expected behaviour of the task.\n\nIt is not treated as the only valid solution. Alternative implementations may be correct if they satisfy the expected behaviour, predefined functional test cases, and software assessment criteria.",
+    "reference_implementation": "def count_vowels(text):\n    vowels = \"aeiouAEIOU\"\n    count = 0\n    for character in text:\n        if character in vowels:\n            count += 1\n    return count",
+    "software_assessment_criteria": "The student's code should be assessed against these software assessment criteria:\n\n1. Correctness\n   - Defines a function named `count_vowels`.\n   - Accepts one string argument.\n   - Returns the number of vowels in the input string.\n   - Counts both lowercase and uppercase vowels.\n   - Handles strings with no vowels and empty strings.\n\n2. Code readability\n   - Uses clear and understandable control flow.\n   - Avoids unnecessary complexity.\n   - Uses meaningful variable names where possible.\n\n3. Robustness and task alignment\n   - Does not rely only on the exact example inputs.\n   - Returns the result instead of only printing it.\n   - Solves the task as specified.",
+    "feedback_quality_criteria": "The generated feedback should be assessed against these feedback quality criteria:\n\n1. Accuracy\n   - Correctly identifies real strengths and weaknesses in the student's code.\n   - Does not invent errors when the code is correct.\n\n2. Specificity\n   - Refers to concrete aspects of the submitted code.\n   - Avoids overly generic feedback.\n\n3. Actionability\n   - Helps the student understand what to improve next.\n   - Gives clear and practical guidance.\n\n4. Understandability\n   - Uses plain language suitable for an introductory programming student.\n   - Avoids unnecessary technical complexity.\n\n5. Pedagogical usefulness\n   - Supports learning rather than only judging the answer.\n   - Prioritises the most important issue first.",
+    "test_cases": [
+      {
+        "input": "hello",
+        "expected": 2,
+        "reason": "basic lowercase word"
+      },
+      {
+        "input": "APPLE",
+        "expected": 2,
+        "reason": "uppercase vowels must be counted"
+      },
+      {
+        "input": "xyz",
+        "expected": 0,
+        "reason": "word with no vowels"
+      },
+      {
+        "input": "Education",
+        "expected": 5,
+        "reason": "mixed-case realistic word"
+      },
+      {
+        "input": "",
+        "expected": 0,
+        "reason": "empty string edge case"
+      },
+      {
+        "input": "AeIoU",
+        "expected": 5,
+        "reason": "all vowels with mixed case"
+      }
+    ],
+    "student_code": "def count_vowels(text):\n    count = 0\n    for char in text:\n        if char in \"aeiou\":\n            count += 1\n    return count",
+    "pre_feedback_reflection": "I think the logic is correct for basic input, but I am unsure whether it covers all possible cases, for example capital letters.",
+    "test_results": {
+      "status": "completed",
+      "summary": "Passed 3 of 6 tests.",
+      "passed": 3,
+      "total": 6,
+      "results": [
+        {
+          "input": "hello",
+          "expected": 2,
+          "actual": 2,
+          "passed": true,
+          "reason": "basic lowercase word"
+        },
+        {
+          "input": "APPLE",
+          "expected": 2,
+          "actual": 0,
+          "passed": false,
+          "reason": "uppercase vowels must be counted"
+        },
+        {
+          "input": "xyz",
+          "expected": 0,
+          "actual": 0,
+          "passed": true,
+          "reason": "word with no vowels"
+        },
+        {
+          "input": "Education",
+          "expected": 5,
+          "actual": 4,
+          "passed": false,
+          "reason": "mixed-case realistic word"
+        },
+        {
+          "input": "",
+          "expected": 0,
+          "actual": 0,
+          "passed": true,
+          "reason": "empty string edge case"
+        },
+        {
+          "input": "AeIoU",
+          "expected": 5,
+          "actual": 2,
+          "passed": false,
+          "reason": "all vowels with mixed case"
+        }
+      ]
+    },
+    "feedback_order": "baseline_first",
+    "label_a": "baseline_minimal_prompt",
+    "label_b": "criteria_enhanced_prompt",
+    "baseline_prompt": "A student in an introductory programming course was given this task:\nWrite a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`\n\nThey submitted this code:\n\n```python\ndef count_vowels(text):\n    count = 0\n    for char in text:\n        if char in \"aeiou\":\n            count += 1\n    return count\n```\n\nPlease provide feedback on the student's code. Keep it to 3–5 sentences in plain language.",
+    "enhanced_prompt": "A student in an introductory programming course was given this task:\nWrite a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`\n\nThey submitted this code:\n\n```python\ndef count_vowels(text):\n    count = 0\n    for char in text:\n        if char in \"aeiou\":\n            count += 1\n    return count\n```\n\nPedagogical reference implementation:\nThis is one valid reference implementation. Do not treat it as the only correct solution.\nAlternative implementations may be correct if they satisfy the expected behaviour, test cases, and assessment criteria.\n\nRationale for this reference implementation:\nThis reference implementation was selected because it is pedagogically simple, uses explicit control flow suitable for introductory programming, and clearly shows the expected behaviour of the task.\n\nIt is not treated as the only valid solution. Alternative implementations may be correct if they satisfy the expected behaviour, predefined functional test cases, and software assessment criteria.\n\n```python\ndef count_vowels(text):\n    vowels = \"aeiouAEIOU\"\n    count = 0\n    for character in text:\n        if character in vowels:\n            count += 1\n    return count\n```\n\nFunctional test results for the student's code:\nThese test results define expected behaviour for the task, but they are not the only basis for feedback.\nPassed 3 of 6 tests.\n- PASS: input='hello', expected=2, actual=2. Reason: basic lowercase word\n- FAIL: input='APPLE', expected=2, actual=0. Reason: uppercase vowels must be counted\n- PASS: input='xyz', expected=0, actual=0. Reason: word with no vowels\n- FAIL: input='Education', expected=5, actual=4. Reason: mixed-case realistic word\n- PASS: input='', expected=0, actual=0. Reason: empty string edge case\n- FAIL: input='AeIoU', expected=5, actual=2. Reason: all vowels with mixed case\n\nSoftware assessment criteria:\nThe student's code should be assessed against these software assessment criteria:\n\n1. Correctness\n   - Defines a function named `count_vowels`.\n   - Accepts one string argument.\n   - Returns the number of vowels in the input string.\n   - Counts both lowercase and uppercase vowels.\n   - Handles strings with no vowels and empty strings.\n\n2. Code readability\n   - Uses clear and understandable control flow.\n   - Avoids unnecessary complexity.\n   - Uses meaningful variable names where possible.\n\n3. Robustness and task alignment\n   - Does not rely only on the exact example inputs.\n   - Returns the result instead of only printing it.\n   - Solves the task as specified.\n\nFeedback quality criteria:\nThe generated feedback should be assessed against these feedback quality criteria:\n\n1. Accuracy\n   - Correctly identifies real strengths and weaknesses in the student's code.\n   - Does not invent errors when the code is correct.\n\n2. Specificity\n   - Refers to concrete aspects of the submitted code.\n   - Avoids overly generic feedback.\n\n3. Actionability\n   - Helps the student understand what to improve next.\n   - Gives clear and practical guidance.\n\n4. Understandability\n   - Uses plain language suitable for an introductory programming student.\n   - Avoids unnecessary technical complexity.\n\n5. Pedagogical usefulness\n   - Supports learning rather than only judging the answer.\n   - Prioritises the most important issue first.\n\nWrite feedback for the student. Focus first on the most important issue. \nAssess the student's code against the expected behaviour, test results, and criteria, not by requiring it to match the reference implementation exactly. \nIf the code passes all tests and solves the task correctly, do not invent a correctness problem. \nInstead, mention that the solution appears correct and suggest the most useful improvement. \nKeep the feedback to 3–5 sentences in plain language.",
+    "feedback_a": "The student's code is a good start, but it currently only counts lowercase vowels and misses uppercase vowels like 'A', 'E', 'I', 'O', and 'U'. To fix this, you can either include uppercase vowels in the string you're checking against or convert the input text to lowercase before checking. Additionally, using a set for the vowels can improve performance slightly. Overall, just a small adjustment is needed to make it work correctly for all cases.",
+    "feedback_b": "Your function `count_vowels` correctly counts vowels in the string, but it currently only checks for lowercase vowels. This is why it failed some tests with uppercase vowels. To fix this, you should include both lowercase and uppercase vowels in your check. For example, you can create a string that contains all the vowels: `\"aeiouAEIOU\"`. This will ensure that your function counts all vowels correctly, regardless of their case. Keep up the good work, and try making this adjustment!",
+    "ratings_a": {
+      "understandability": 5,
+      "accuracy": 5,
+      "specificity": 5,
+      "actionability": 5,
+      "usefulness": 4,
+      "pedagogical_value": 4
+    },
+    "ratings_b": {
+      "understandability": 5,
+      "accuracy": 5,
+      "specificity": 5,
+      "actionability": 5,
+      "usefulness": 5,
+      "pedagogical_value": 5
+    },
+    "preferred_feedback": "Feedback B",
+    "perceived_difference": "Feedback B explains more clearly why the code failed in some tests and gives a concrete example of how to improve it.",
+    "missing_or_problematic": "Feedback A includes a performance suggestion that is less important than solving the actual correctness issue first.",
+    "comment": "Both feedback versions are useful, but Feedback B is slightly stronger because it connects the issue directly to expected test behaviour."
+  },
+  {
+    "timestamp": "2026-04-29T00:59:58.655013",
+    "participant_id": "P791892",
+    "model_provider": "OpenAI API",
+    "model_name": "gpt-4o-mini-2024-07-18",
+    "model_temperature": 0.2,
+    "max_tokens": 350,
+    "task_id": "count_vowels",
+    "task_title": "Count the Vowels",
+    "task_description": "Write a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`",
+    "reference_implementation_rationale": "This reference implementation was selected because it is pedagogically simple, uses explicit control flow suitable for introductory programming, and clearly shows the expected behaviour of the task.\n\nIt is not treated as the only valid solution. Alternative implementations may be correct if they satisfy the expected behaviour, predefined functional test cases, and software assessment criteria.",
+    "reference_implementation": "def count_vowels(text):\n    vowels = \"aeiouAEIOU\"\n    count = 0\n    for character in text:\n        if character in vowels:\n            count += 1\n    return count",
+    "software_assessment_criteria": "The student's code should be assessed against these software assessment criteria:\n\n1. Correctness\n   - Defines a function named `count_vowels`.\n   - Accepts one string argument.\n   - Returns the number of vowels in the input string.\n   - Counts both lowercase and uppercase vowels.\n   - Handles strings with no vowels and empty strings.\n\n2. Code readability\n   - Uses clear and understandable control flow.\n   - Avoids unnecessary complexity.\n   - Uses meaningful variable names where possible.\n\n3. Robustness and task alignment\n   - Does not rely only on the exact example inputs.\n   - Returns the result instead of only printing it.\n   - Solves the task as specified.",
+    "feedback_quality_criteria": "The generated feedback should be assessed against these feedback quality criteria:\n\n1. Accuracy\n   - Correctly identifies real strengths and weaknesses in the student's code.\n   - Does not invent errors when the code is correct.\n\n2. Specificity\n   - Refers to concrete aspects of the submitted code.\n   - Avoids overly generic feedback.\n\n3. Actionability\n   - Helps the student understand what to improve next.\n   - Gives clear and practical guidance.\n\n4. Understandability\n   - Uses plain language suitable for an introductory programming student.\n   - Avoids unnecessary technical complexity.\n\n5. Pedagogical usefulness\n   - Supports learning rather than only judging the answer.\n   - Prioritises the most important issue first.",
+    "test_cases": [
+      {
+        "input": "hello",
+        "expected": 2,
+        "reason": "basic lowercase word"
+      },
+      {
+        "input": "APPLE",
+        "expected": 2,
+        "reason": "uppercase vowels must be counted"
+      },
+      {
+        "input": "xyz",
+        "expected": 0,
+        "reason": "word with no vowels"
+      },
+      {
+        "input": "Education",
+        "expected": 5,
+        "reason": "mixed-case realistic word"
+      },
+      {
+        "input": "",
+        "expected": 0,
+        "reason": "empty string edge case"
+      },
+      {
+        "input": "AeIoU",
+        "expected": 5,
+        "reason": "all vowels with mixed case"
+      }
+    ],
+    "student_code": "def count_vowels(text):\n    return len(text)",
+    "pre_feedback_reflection": "I think this may be too simple, since it counts all characters and not specifically vowels.",
+    "test_results": {
+      "status": "completed",
+      "summary": "Passed 2 of 6 tests.",
+      "passed": 2,
+      "total": 6,
+      "results": [
+        {
+          "input": "hello",
+          "expected": 2,
+          "actual": 5,
+          "passed": false,
+          "reason": "basic lowercase word"
+        },
+        {
+          "input": "APPLE",
+          "expected": 2,
+          "actual": 5,
+          "passed": false,
+          "reason": "uppercase vowels must be counted"
+        },
+        {
+          "input": "xyz",
+          "expected": 0,
+          "actual": 3,
+          "passed": false,
+          "reason": "word with no vowels"
+        },
+        {
+          "input": "Education",
+          "expected": 5,
+          "actual": 9,
+          "passed": false,
+          "reason": "mixed-case realistic word"
+        },
+        {
+          "input": "",
+          "expected": 0,
+          "actual": 0,
+          "passed": true,
+          "reason": "empty string edge case"
+        },
+        {
+          "input": "AeIoU",
+          "expected": 5,
+          "actual": 5,
+          "passed": true,
+          "reason": "all vowels with mixed case"
+        }
+      ]
+    },
+    "feedback_order": "baseline_first",
+    "label_a": "baseline_minimal_prompt",
+    "label_b": "criteria_enhanced_prompt",
+    "baseline_prompt": "A student in an introductory programming course was given this task:\nWrite a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`\n\nThey submitted this code:\n\n```python\ndef count_vowels(text):\n    return len(text)\n```\n\nPlease provide feedback on the student's code. Keep it to 3–5 sentences in plain language.",
+    "enhanced_prompt": "A student in an introductory programming course was given this task:\nWrite a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`\n\nThey submitted this code:\n\n```python\ndef count_vowels(text):\n    return len(text)\n```\n\nPedagogical reference implementation:\nThis is one valid reference implementation. Do not treat it as the only correct solution.\nAlternative implementations may be correct if they satisfy the expected behaviour, test cases, and assessment criteria.\n\nRationale for this reference implementation:\nThis reference implementation was selected because it is pedagogically simple, uses explicit control flow suitable for introductory programming, and clearly shows the expected behaviour of the task.\n\nIt is not treated as the only valid solution. Alternative implementations may be correct if they satisfy the expected behaviour, predefined functional test cases, and software assessment criteria.\n\n```python\ndef count_vowels(text):\n    vowels = \"aeiouAEIOU\"\n    count = 0\n    for character in text:\n        if character in vowels:\n            count += 1\n    return count\n```\n\nFunctional test results for the student's code:\nThese test results define expected behaviour for the task, but they are not the only basis for feedback.\nPassed 2 of 6 tests.\n- FAIL: input='hello', expected=2, actual=5. Reason: basic lowercase word\n- FAIL: input='APPLE', expected=2, actual=5. Reason: uppercase vowels must be counted\n- FAIL: input='xyz', expected=0, actual=3. Reason: word with no vowels\n- FAIL: input='Education', expected=5, actual=9. Reason: mixed-case realistic word\n- PASS: input='', expected=0, actual=0. Reason: empty string edge case\n- PASS: input='AeIoU', expected=5, actual=5. Reason: all vowels with mixed case\n\nSoftware assessment criteria:\nThe student's code should be assessed against these software assessment criteria:\n\n1. Correctness\n   - Defines a function named `count_vowels`.\n   - Accepts one string argument.\n   - Returns the number of vowels in the input string.\n   - Counts both lowercase and uppercase vowels.\n   - Handles strings with no vowels and empty strings.\n\n2. Code readability\n   - Uses clear and understandable control flow.\n   - Avoids unnecessary complexity.\n   - Uses meaningful variable names where possible.\n\n3. Robustness and task alignment\n   - Does not rely only on the exact example inputs.\n   - Returns the result instead of only printing it.\n   - Solves the task as specified.\n\nFeedback quality criteria:\nThe generated feedback should be assessed against these feedback quality criteria:\n\n1. Accuracy\n   - Correctly identifies real strengths and weaknesses in the student's code.\n   - Does not invent errors when the code is correct.\n\n2. Specificity\n   - Refers to concrete aspects of the submitted code.\n   - Avoids overly generic feedback.\n\n3. Actionability\n   - Helps the student understand what to improve next.\n   - Gives clear and practical guidance.\n\n4. Understandability\n   - Uses plain language suitable for an introductory programming student.\n   - Avoids unnecessary technical complexity.\n\n5. Pedagogical usefulness\n   - Supports learning rather than only judging the answer.\n   - Prioritises the most important issue first.\n\nWrite feedback for the student. Focus first on the most important issue. \nAssess the student's code against the expected behaviour, test results, and criteria, not by requiring it to match the reference implementation exactly. \nIf the code passes all tests and solves the task correctly, do not invent a correctness problem. \nInstead, mention that the solution appears correct and suggest the most useful improvement. \nKeep the feedback to 3–5 sentences in plain language.",
+    "feedback_a": "The student's code currently returns the length of the input string instead of counting the vowels. To correctly implement the `count_vowels` function, you need to check each character in the string and see if it is a vowel (a, e, i, o, u, both uppercase and lowercase). You can use a loop or a comprehension to count how many vowels are present. Consider revising your code to include this logic for it to work as intended.",
+    "feedback_b": "Your implementation of the `count_vowels` function does not correctly count the vowels in the input string. Instead of returning the number of vowels, your code currently returns the length of the string, which is why it failed most of the tests. To fix this, you should iterate through each character in the string and check if it is a vowel (either lowercase or uppercase). Once you identify a vowel, you can increase a count and return that count at the end. This will help you meet the task requirements and pass all the tests.",
+    "ratings_a": {
+      "understandability": 5,
+      "accuracy": 5,
+      "specificity": 5,
+      "actionability": 4,
+      "usefulness": 4,
+      "pedagogical_value": 4
+    },
+    "ratings_b": {
+      "understandability": 5,
+      "accuracy": 5,
+      "specificity": 5,
+      "actionability": 5,
+      "usefulness": 5,
+      "pedagogical_value": 5
+    },
+    "preferred_feedback": "Feedback B",
+    "perceived_difference": "Feedback B explains the correction process more step by step, which makes it easier to understand how to change the code.",
+    "missing_or_problematic": "Feedback A is clear, but it gives slightly less guidance on how the counting logic should be structured.",
+    "comment": "Both feedback versions correctly identify the main issue, but Feedback B gives stronger instructional guidance."
+  },
+  {
+    "timestamp": "2026-04-29T01:02:10.796180",
+    "participant_id": "P201584",
+    "model_provider": "OpenAI API",
+    "model_name": "gpt-4o-mini-2024-07-18",
+    "model_temperature": 0.2,
+    "max_tokens": 350,
+    "task_id": "count_vowels",
+    "task_title": "Count the Vowels",
+    "task_description": "Write a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`",
+    "reference_implementation_rationale": "This reference implementation was selected because it is pedagogically simple, uses explicit control flow suitable for introductory programming, and clearly shows the expected behaviour of the task.\n\nIt is not treated as the only valid solution. Alternative implementations may be correct if they satisfy the expected behaviour, predefined functional test cases, and software assessment criteria.",
+    "reference_implementation": "def count_vowels(text):\n    vowels = \"aeiouAEIOU\"\n    count = 0\n    for character in text:\n        if character in vowels:\n            count += 1\n    return count",
+    "software_assessment_criteria": "The student's code should be assessed against these software assessment criteria:\n\n1. Correctness\n   - Defines a function named `count_vowels`.\n   - Accepts one string argument.\n   - Returns the number of vowels in the input string.\n   - Counts both lowercase and uppercase vowels.\n   - Handles strings with no vowels and empty strings.\n\n2. Code readability\n   - Uses clear and understandable control flow.\n   - Avoids unnecessary complexity.\n   - Uses meaningful variable names where possible.\n\n3. Robustness and task alignment\n   - Does not rely only on the exact example inputs.\n   - Returns the result instead of only printing it.\n   - Solves the task as specified.",
+    "feedback_quality_criteria": "The generated feedback should be assessed against these feedback quality criteria:\n\n1. Accuracy\n   - Correctly identifies real strengths and weaknesses in the student's code.\n   - Does not invent errors when the code is correct.\n\n2. Specificity\n   - Refers to concrete aspects of the submitted code.\n   - Avoids overly generic feedback.\n\n3. Actionability\n   - Helps the student understand what to improve next.\n   - Gives clear and practical guidance.\n\n4. Understandability\n   - Uses plain language suitable for an introductory programming student.\n   - Avoids unnecessary technical complexity.\n\n5. Pedagogical usefulness\n   - Supports learning rather than only judging the answer.\n   - Prioritises the most important issue first.",
+    "test_cases": [
+      {
+        "input": "hello",
+        "expected": 2,
+        "reason": "basic lowercase word"
+      },
+      {
+        "input": "APPLE",
+        "expected": 2,
+        "reason": "uppercase vowels must be counted"
+      },
+      {
+        "input": "xyz",
+        "expected": 0,
+        "reason": "word with no vowels"
+      },
+      {
+        "input": "Education",
+        "expected": 5,
+        "reason": "mixed-case realistic word"
+      },
+      {
+        "input": "",
+        "expected": 0,
+        "reason": "empty string edge case"
+      },
+      {
+        "input": "AeIoU",
+        "expected": 5,
+        "reason": "all vowels with mixed case"
+      }
+    ],
+    "student_code": "def count_vowels(text):\n    count = 0\n    for char in text:\n        if char == \"a\" or char == \"A\":\n            count += 1\n        elif char == \"e\" or char == \"E\":\n            count += 1\n        elif char == \"i\" or char == \"I\":\n            count += 1\n        elif char == \"o\" or char == \"O\":\n            count += 1\n        elif char == \"u\" or char == \"U\":\n            count += 1\n    return count",
+    "pre_feedback_reflection": "I think it works for both lowercase and uppercase vowels, but I am not sure if this is the most efficient way.",
+    "test_results": {
+      "status": "completed",
+      "summary": "Passed 6 of 6 tests.",
+      "passed": 6,
+      "total": 6,
+      "results": [
+        {
+          "input": "hello",
+          "expected": 2,
+          "actual": 2,
+          "passed": true,
+          "reason": "basic lowercase word"
+        },
+        {
+          "input": "APPLE",
+          "expected": 2,
+          "actual": 2,
+          "passed": true,
+          "reason": "uppercase vowels must be counted"
+        },
+        {
+          "input": "xyz",
+          "expected": 0,
+          "actual": 0,
+          "passed": true,
+          "reason": "word with no vowels"
+        },
+        {
+          "input": "Education",
+          "expected": 5,
+          "actual": 5,
+          "passed": true,
+          "reason": "mixed-case realistic word"
+        },
+        {
+          "input": "",
+          "expected": 0,
+          "actual": 0,
+          "passed": true,
+          "reason": "empty string edge case"
+        },
+        {
+          "input": "AeIoU",
+          "expected": 5,
+          "actual": 5,
+          "passed": true,
+          "reason": "all vowels with mixed case"
+        }
+      ]
+    },
+    "feedback_order": "baseline_first",
+    "label_a": "baseline_minimal_prompt",
+    "label_b": "criteria_enhanced_prompt",
+    "baseline_prompt": "A student in an introductory programming course was given this task:\nWrite a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`\n\nThey submitted this code:\n\n```python\ndef count_vowels(text):\n    count = 0\n    for char in text:\n        if char == \"a\" or char == \"A\":\n            count += 1\n        elif char == \"e\" or char == \"E\":\n            count += 1\n        elif char == \"i\" or char == \"I\":\n            count += 1\n        elif char == \"o\" or char == \"O\":\n            count += 1\n        elif char == \"u\" or char == \"U\":\n            count += 1\n    return count\n```\n\nPlease provide feedback on the student's code. Keep it to 3–5 sentences in plain language.",
+    "enhanced_prompt": "A student in an introductory programming course was given this task:\nWrite a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`\n\nThey submitted this code:\n\n```python\ndef count_vowels(text):\n    count = 0\n    for char in text:\n        if char == \"a\" or char == \"A\":\n            count += 1\n        elif char == \"e\" or char == \"E\":\n            count += 1\n        elif char == \"i\" or char == \"I\":\n            count += 1\n        elif char == \"o\" or char == \"O\":\n            count += 1\n        elif char == \"u\" or char == \"U\":\n            count += 1\n    return count\n```\n\nPedagogical reference implementation:\nThis is one valid reference implementation. Do not treat it as the only correct solution.\nAlternative implementations may be correct if they satisfy the expected behaviour, test cases, and assessment criteria.\n\nRationale for this reference implementation:\nThis reference implementation was selected because it is pedagogically simple, uses explicit control flow suitable for introductory programming, and clearly shows the expected behaviour of the task.\n\nIt is not treated as the only valid solution. Alternative implementations may be correct if they satisfy the expected behaviour, predefined functional test cases, and software assessment criteria.\n\n```python\ndef count_vowels(text):\n    vowels = \"aeiouAEIOU\"\n    count = 0\n    for character in text:\n        if character in vowels:\n            count += 1\n    return count\n```\n\nFunctional test results for the student's code:\nThese test results define expected behaviour for the task, but they are not the only basis for feedback.\nPassed 6 of 6 tests.\n- PASS: input='hello', expected=2, actual=2. Reason: basic lowercase word\n- PASS: input='APPLE', expected=2, actual=2. Reason: uppercase vowels must be counted\n- PASS: input='xyz', expected=0, actual=0. Reason: word with no vowels\n- PASS: input='Education', expected=5, actual=5. Reason: mixed-case realistic word\n- PASS: input='', expected=0, actual=0. Reason: empty string edge case\n- PASS: input='AeIoU', expected=5, actual=5. Reason: all vowels with mixed case\n\nSoftware assessment criteria:\nThe student's code should be assessed against these software assessment criteria:\n\n1. Correctness\n   - Defines a function named `count_vowels`.\n   - Accepts one string argument.\n   - Returns the number of vowels in the input string.\n   - Counts both lowercase and uppercase vowels.\n   - Handles strings with no vowels and empty strings.\n\n2. Code readability\n   - Uses clear and understandable control flow.\n   - Avoids unnecessary complexity.\n   - Uses meaningful variable names where possible.\n\n3. Robustness and task alignment\n   - Does not rely only on the exact example inputs.\n   - Returns the result instead of only printing it.\n   - Solves the task as specified.\n\nFeedback quality criteria:\nThe generated feedback should be assessed against these feedback quality criteria:\n\n1. Accuracy\n   - Correctly identifies real strengths and weaknesses in the student's code.\n   - Does not invent errors when the code is correct.\n\n2. Specificity\n   - Refers to concrete aspects of the submitted code.\n   - Avoids overly generic feedback.\n\n3. Actionability\n   - Helps the student understand what to improve next.\n   - Gives clear and practical guidance.\n\n4. Understandability\n   - Uses plain language suitable for an introductory programming student.\n   - Avoids unnecessary technical complexity.\n\n5. Pedagogical usefulness\n   - Supports learning rather than only judging the answer.\n   - Prioritises the most important issue first.\n\nWrite feedback for the student. Focus first on the most important issue. \nAssess the student's code against the expected behaviour, test results, and criteria, not by requiring it to match the reference implementation exactly. \nIf the code passes all tests and solves the task correctly, do not invent a correctness problem. \nInstead, mention that the solution appears correct and suggest the most useful improvement. \nKeep the feedback to 3–5 sentences in plain language.",
+    "feedback_a": "The student's code correctly counts the vowels in a string, but it can be simplified for better readability and efficiency. Instead of checking each vowel individually with multiple `if` statements, you can use a set of vowels and check if each character is in that set. This approach reduces redundancy and makes the code easier to maintain. Additionally, consider using a generator expression with the `sum` function to make the counting even more concise.",
+    "feedback_b": "Your implementation of the `count_vowels` function is correct, as it successfully counts both lowercase and uppercase vowels in the input string, and it passed all the test cases. However, to improve the readability and efficiency of your code, consider using a single condition to check if a character is a vowel, such as using a string of vowels and the `in` operator. This approach simplifies your code and makes it easier to read. Great job overall, and keep up the good work!",
+    "ratings_a": {
+      "understandability": 4,
+      "accuracy": 5,
+      "specificity": 5,
+      "actionability": 4,
+      "usefulness": 4,
+      "pedagogical_value": 4
+    },
+    "ratings_b": {
+      "understandability": 5,
+      "accuracy": 5,
+      "specificity": 5,
+      "actionability": 5,
+      "usefulness": 5,
+      "pedagogical_value": 5
+    },
+    "preferred_feedback": "Feedback B",
+    "perceived_difference": "Feedback B gives clearer feedback at an appropriate student level, while Feedback A introduces a more advanced suggestion with generator expressions.",
+    "missing_or_problematic": "Feedback A is useful, but the generator expression suggestion may be less suitable if the student is still learning basic control structures.",
+    "comment": "Both feedback versions are good, but Feedback B balances encouragement and improvement more effectively."
+  },
+  {
+    "timestamp": "2026-04-29T01:04:31.673067",
+    "participant_id": "P506061",
+    "model_provider": "OpenAI API",
+    "model_name": "gpt-4o-mini-2024-07-18",
+    "model_temperature": 0.2,
+    "max_tokens": 350,
+    "task_id": "count_vowels",
+    "task_title": "Count the Vowels",
+    "task_description": "Write a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`",
+    "reference_implementation_rationale": "This reference implementation was selected because it is pedagogically simple, uses explicit control flow suitable for introductory programming, and clearly shows the expected behaviour of the task.\n\nIt is not treated as the only valid solution. Alternative implementations may be correct if they satisfy the expected behaviour, predefined functional test cases, and software assessment criteria.",
+    "reference_implementation": "def count_vowels(text):\n    vowels = \"aeiouAEIOU\"\n    count = 0\n    for character in text:\n        if character in vowels:\n            count += 1\n    return count",
+    "software_assessment_criteria": "The student's code should be assessed against these software assessment criteria:\n\n1. Correctness\n   - Defines a function named `count_vowels`.\n   - Accepts one string argument.\n   - Returns the number of vowels in the input string.\n   - Counts both lowercase and uppercase vowels.\n   - Handles strings with no vowels and empty strings.\n\n2. Code readability\n   - Uses clear and understandable control flow.\n   - Avoids unnecessary complexity.\n   - Uses meaningful variable names where possible.\n\n3. Robustness and task alignment\n   - Does not rely only on the exact example inputs.\n   - Returns the result instead of only printing it.\n   - Solves the task as specified.",
+    "feedback_quality_criteria": "The generated feedback should be assessed against these feedback quality criteria:\n\n1. Accuracy\n   - Correctly identifies real strengths and weaknesses in the student's code.\n   - Does not invent errors when the code is correct.\n\n2. Specificity\n   - Refers to concrete aspects of the submitted code.\n   - Avoids overly generic feedback.\n\n3. Actionability\n   - Helps the student understand what to improve next.\n   - Gives clear and practical guidance.\n\n4. Understandability\n   - Uses plain language suitable for an introductory programming student.\n   - Avoids unnecessary technical complexity.\n\n5. Pedagogical usefulness\n   - Supports learning rather than only judging the answer.\n   - Prioritises the most important issue first.",
+    "test_cases": [
+      {
+        "input": "hello",
+        "expected": 2,
+        "reason": "basic lowercase word"
+      },
+      {
+        "input": "APPLE",
+        "expected": 2,
+        "reason": "uppercase vowels must be counted"
+      },
+      {
+        "input": "xyz",
+        "expected": 0,
+        "reason": "word with no vowels"
+      },
+      {
+        "input": "Education",
+        "expected": 5,
+        "reason": "mixed-case realistic word"
+      },
+      {
+        "input": "",
+        "expected": 0,
+        "reason": "empty string edge case"
+      },
+      {
+        "input": "AeIoU",
+        "expected": 5,
+        "reason": "all vowels with mixed case"
+      }
+    ],
+    "student_code": "def count_vowels(text):\n    vowels = \"aeioAEIO\"\n    count = 0\n    for char in text:\n        if char in vowels:\n            count += 1\n    return count",
+    "pre_feedback_reflection": "I think the solution should work, but I am not completely sure if I included all vowels correctly.",
+    "test_results": {
+      "status": "completed",
+      "summary": "Passed 4 of 6 tests.",
+      "passed": 4,
+      "total": 6,
+      "results": [
+        {
+          "input": "hello",
+          "expected": 2,
+          "actual": 2,
+          "passed": true,
+          "reason": "basic lowercase word"
+        },
+        {
+          "input": "APPLE",
+          "expected": 2,
+          "actual": 2,
+          "passed": true,
+          "reason": "uppercase vowels must be counted"
+        },
+        {
+          "input": "xyz",
+          "expected": 0,
+          "actual": 0,
+          "passed": true,
+          "reason": "word with no vowels"
+        },
+        {
+          "input": "Education",
+          "expected": 5,
+          "actual": 4,
+          "passed": false,
+          "reason": "mixed-case realistic word"
+        },
+        {
+          "input": "",
+          "expected": 0,
+          "actual": 0,
+          "passed": true,
+          "reason": "empty string edge case"
+        },
+        {
+          "input": "AeIoU",
+          "expected": 5,
+          "actual": 4,
+          "passed": false,
+          "reason": "all vowels with mixed case"
+        }
+      ]
+    },
+    "feedback_order": "baseline_first",
+    "label_a": "baseline_minimal_prompt",
+    "label_b": "criteria_enhanced_prompt",
+    "baseline_prompt": "A student in an introductory programming course was given this task:\nWrite a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`\n\nThey submitted this code:\n\n```python\ndef count_vowels(text):\n    vowels = \"aeioAEIO\"\n    count = 0\n    for char in text:\n        if char in vowels:\n            count += 1\n    return count\n```\n\nPlease provide feedback on the student's code. Keep it to 3–5 sentences in plain language.",
+    "enhanced_prompt": "A student in an introductory programming course was given this task:\nWrite a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`\n\nThey submitted this code:\n\n```python\ndef count_vowels(text):\n    vowels = \"aeioAEIO\"\n    count = 0\n    for char in text:\n        if char in vowels:\n            count += 1\n    return count\n```\n\nPedagogical reference implementation:\nThis is one valid reference implementation. Do not treat it as the only correct solution.\nAlternative implementations may be correct if they satisfy the expected behaviour, test cases, and assessment criteria.\n\nRationale for this reference implementation:\nThis reference implementation was selected because it is pedagogically simple, uses explicit control flow suitable for introductory programming, and clearly shows the expected behaviour of the task.\n\nIt is not treated as the only valid solution. Alternative implementations may be correct if they satisfy the expected behaviour, predefined functional test cases, and software assessment criteria.\n\n```python\ndef count_vowels(text):\n    vowels = \"aeiouAEIOU\"\n    count = 0\n    for character in text:\n        if character in vowels:\n            count += 1\n    return count\n```\n\nFunctional test results for the student's code:\nThese test results define expected behaviour for the task, but they are not the only basis for feedback.\nPassed 4 of 6 tests.\n- PASS: input='hello', expected=2, actual=2. Reason: basic lowercase word\n- PASS: input='APPLE', expected=2, actual=2. Reason: uppercase vowels must be counted\n- PASS: input='xyz', expected=0, actual=0. Reason: word with no vowels\n- FAIL: input='Education', expected=5, actual=4. Reason: mixed-case realistic word\n- PASS: input='', expected=0, actual=0. Reason: empty string edge case\n- FAIL: input='AeIoU', expected=5, actual=4. Reason: all vowels with mixed case\n\nSoftware assessment criteria:\nThe student's code should be assessed against these software assessment criteria:\n\n1. Correctness\n   - Defines a function named `count_vowels`.\n   - Accepts one string argument.\n   - Returns the number of vowels in the input string.\n   - Counts both lowercase and uppercase vowels.\n   - Handles strings with no vowels and empty strings.\n\n2. Code readability\n   - Uses clear and understandable control flow.\n   - Avoids unnecessary complexity.\n   - Uses meaningful variable names where possible.\n\n3. Robustness and task alignment\n   - Does not rely only on the exact example inputs.\n   - Returns the result instead of only printing it.\n   - Solves the task as specified.\n\nFeedback quality criteria:\nThe generated feedback should be assessed against these feedback quality criteria:\n\n1. Accuracy\n   - Correctly identifies real strengths and weaknesses in the student's code.\n   - Does not invent errors when the code is correct.\n\n2. Specificity\n   - Refers to concrete aspects of the submitted code.\n   - Avoids overly generic feedback.\n\n3. Actionability\n   - Helps the student understand what to improve next.\n   - Gives clear and practical guidance.\n\n4. Understandability\n   - Uses plain language suitable for an introductory programming student.\n   - Avoids unnecessary technical complexity.\n\n5. Pedagogical usefulness\n   - Supports learning rather than only judging the answer.\n   - Prioritises the most important issue first.\n\nWrite feedback for the student. Focus first on the most important issue. \nAssess the student's code against the expected behaviour, test results, and criteria, not by requiring it to match the reference implementation exactly. \nIf the code passes all tests and solves the task correctly, do not invent a correctness problem. \nInstead, mention that the solution appears correct and suggest the most useful improvement. \nKeep the feedback to 3–5 sentences in plain language.",
+    "feedback_a": "The student's code is almost correct, but there is a small mistake in the string of vowels. It should include all the vowels: \"aeiouAEIOU\" instead of \"aeioAEIO\". This means that the function will not count the letter 'u' in both lowercase and uppercase. Once that is fixed, the function will accurately count the number of vowels in the input string. Overall, the structure of the code is good and effectively uses a loop to check each character.",
+    "feedback_b": "Your function `count_vowels` is almost correct, but there are a couple of issues with the vowels you are counting. In your code, you have the string of vowels as `\"aeioAEIO\"`, which is missing the letter 'u' in both lowercase and uppercase. This is why your function returned 4 instead of 5 for the input \"Education\" and 4 instead of 5 for \"AeIoU\". To fix this, update your vowels string to include all the vowels: `\"aeiouAEIOU\"`. Once you make this change, your function should pass all the tests. Great job on the overall structure and readability of your code!",
+    "ratings_a": {
+      "understandability": 5,
+      "accuracy": 5,
+      "specificity": 5,
+      "actionability": 5,
+      "usefulness": 4,
+      "pedagogical_value": 4
+    },
+    "ratings_b": {
+      "understandability": 5,
+      "accuracy": 5,
+      "specificity": 5,
+      "actionability": 5,
+      "usefulness": 5,
+      "pedagogical_value": 5
+    },
+    "preferred_feedback": "Feedback B",
+    "perceived_difference": "Feedback B makes the issue easier to understand by showing concrete example inputs where the missing vowel causes incorrect results.",
+    "missing_or_problematic": "Feedback A identifies the missing vowels clearly, but it does not illustrate the practical effect on output as clearly as Feedback B.",
+    "comment": "Both feedback versions are accurate, but Feedback B gives stronger learning support by connecting the issue to actual test cases."
+  },
+  {
+    "timestamp": "2026-04-29T01:06:49.503765",
+    "participant_id": "P465703",
+    "model_provider": "OpenAI API",
+    "model_name": "gpt-4o-mini-2024-07-18",
+    "model_temperature": 0.2,
+    "max_tokens": 350,
+    "task_id": "count_vowels",
+    "task_title": "Count the Vowels",
+    "task_description": "Write a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`",
+    "reference_implementation_rationale": "This reference implementation was selected because it is pedagogically simple, uses explicit control flow suitable for introductory programming, and clearly shows the expected behaviour of the task.\n\nIt is not treated as the only valid solution. Alternative implementations may be correct if they satisfy the expected behaviour, predefined functional test cases, and software assessment criteria.",
+    "reference_implementation": "def count_vowels(text):\n    vowels = \"aeiouAEIOU\"\n    count = 0\n    for character in text:\n        if character in vowels:\n            count += 1\n    return count",
+    "software_assessment_criteria": "The student's code should be assessed against these software assessment criteria:\n\n1. Correctness\n   - Defines a function named `count_vowels`.\n   - Accepts one string argument.\n   - Returns the number of vowels in the input string.\n   - Counts both lowercase and uppercase vowels.\n   - Handles strings with no vowels and empty strings.\n\n2. Code readability\n   - Uses clear and understandable control flow.\n   - Avoids unnecessary complexity.\n   - Uses meaningful variable names where possible.\n\n3. Robustness and task alignment\n   - Does not rely only on the exact example inputs.\n   - Returns the result instead of only printing it.\n   - Solves the task as specified.",
+    "feedback_quality_criteria": "The generated feedback should be assessed against these feedback quality criteria:\n\n1. Accuracy\n   - Correctly identifies real strengths and weaknesses in the student's code.\n   - Does not invent errors when the code is correct.\n\n2. Specificity\n   - Refers to concrete aspects of the submitted code.\n   - Avoids overly generic feedback.\n\n3. Actionability\n   - Helps the student understand what to improve next.\n   - Gives clear and practical guidance.\n\n4. Understandability\n   - Uses plain language suitable for an introductory programming student.\n   - Avoids unnecessary technical complexity.\n\n5. Pedagogical usefulness\n   - Supports learning rather than only judging the answer.\n   - Prioritises the most important issue first.",
+    "test_cases": [
+      {
+        "input": "hello",
+        "expected": 2,
+        "reason": "basic lowercase word"
+      },
+      {
+        "input": "APPLE",
+        "expected": 2,
+        "reason": "uppercase vowels must be counted"
+      },
+      {
+        "input": "xyz",
+        "expected": 0,
+        "reason": "word with no vowels"
+      },
+      {
+        "input": "Education",
+        "expected": 5,
+        "reason": "mixed-case realistic word"
+      },
+      {
+        "input": "",
+        "expected": 0,
+        "reason": "empty string edge case"
+      },
+      {
+        "input": "AeIoU",
+        "expected": 5,
+        "reason": "all vowels with mixed case"
+      }
+    ],
+    "student_code": "def count_vowels(text):\n    vowels = [\"a\", \"e\", \"i\", \"o\", \"u\", \"A\", \"E\", \"I\", \"O\", \"U\"]\n    count = 0\n    for char in text:\n        if char in vowels:\n            count = count + 1\n    return count",
+    "pre_feedback_reflection": "I think the solution should work, but I am not sure if using a list for all vowels is the simplest approach.",
+    "test_results": {
+      "status": "completed",
+      "summary": "Passed 6 of 6 tests.",
+      "passed": 6,
+      "total": 6,
+      "results": [
+        {
+          "input": "hello",
+          "expected": 2,
+          "actual": 2,
+          "passed": true,
+          "reason": "basic lowercase word"
+        },
+        {
+          "input": "APPLE",
+          "expected": 2,
+          "actual": 2,
+          "passed": true,
+          "reason": "uppercase vowels must be counted"
+        },
+        {
+          "input": "xyz",
+          "expected": 0,
+          "actual": 0,
+          "passed": true,
+          "reason": "word with no vowels"
+        },
+        {
+          "input": "Education",
+          "expected": 5,
+          "actual": 5,
+          "passed": true,
+          "reason": "mixed-case realistic word"
+        },
+        {
+          "input": "",
+          "expected": 0,
+          "actual": 0,
+          "passed": true,
+          "reason": "empty string edge case"
+        },
+        {
+          "input": "AeIoU",
+          "expected": 5,
+          "actual": 5,
+          "passed": true,
+          "reason": "all vowels with mixed case"
+        }
+      ]
+    },
+    "feedback_order": "enhanced_first",
+    "label_a": "criteria_enhanced_prompt",
+    "label_b": "baseline_minimal_prompt",
+    "baseline_prompt": "A student in an introductory programming course was given this task:\nWrite a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`\n\nThey submitted this code:\n\n```python\ndef count_vowels(text):\n    vowels = [\"a\", \"e\", \"i\", \"o\", \"u\", \"A\", \"E\", \"I\", \"O\", \"U\"]\n    count = 0\n    for char in text:\n        if char in vowels:\n            count = count + 1\n    return count\n```\n\nPlease provide feedback on the student's code. Keep it to 3–5 sentences in plain language.",
+    "enhanced_prompt": "A student in an introductory programming course was given this task:\nWrite a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`\n\nThey submitted this code:\n\n```python\ndef count_vowels(text):\n    vowels = [\"a\", \"e\", \"i\", \"o\", \"u\", \"A\", \"E\", \"I\", \"O\", \"U\"]\n    count = 0\n    for char in text:\n        if char in vowels:\n            count = count + 1\n    return count\n```\n\nPedagogical reference implementation:\nThis is one valid reference implementation. Do not treat it as the only correct solution.\nAlternative implementations may be correct if they satisfy the expected behaviour, test cases, and assessment criteria.\n\nRationale for this reference implementation:\nThis reference implementation was selected because it is pedagogically simple, uses explicit control flow suitable for introductory programming, and clearly shows the expected behaviour of the task.\n\nIt is not treated as the only valid solution. Alternative implementations may be correct if they satisfy the expected behaviour, predefined functional test cases, and software assessment criteria.\n\n```python\ndef count_vowels(text):\n    vowels = \"aeiouAEIOU\"\n    count = 0\n    for character in text:\n        if character in vowels:\n            count += 1\n    return count\n```\n\nFunctional test results for the student's code:\nThese test results define expected behaviour for the task, but they are not the only basis for feedback.\nPassed 6 of 6 tests.\n- PASS: input='hello', expected=2, actual=2. Reason: basic lowercase word\n- PASS: input='APPLE', expected=2, actual=2. Reason: uppercase vowels must be counted\n- PASS: input='xyz', expected=0, actual=0. Reason: word with no vowels\n- PASS: input='Education', expected=5, actual=5. Reason: mixed-case realistic word\n- PASS: input='', expected=0, actual=0. Reason: empty string edge case\n- PASS: input='AeIoU', expected=5, actual=5. Reason: all vowels with mixed case\n\nSoftware assessment criteria:\nThe student's code should be assessed against these software assessment criteria:\n\n1. Correctness\n   - Defines a function named `count_vowels`.\n   - Accepts one string argument.\n   - Returns the number of vowels in the input string.\n   - Counts both lowercase and uppercase vowels.\n   - Handles strings with no vowels and empty strings.\n\n2. Code readability\n   - Uses clear and understandable control flow.\n   - Avoids unnecessary complexity.\n   - Uses meaningful variable names where possible.\n\n3. Robustness and task alignment\n   - Does not rely only on the exact example inputs.\n   - Returns the result instead of only printing it.\n   - Solves the task as specified.\n\nFeedback quality criteria:\nThe generated feedback should be assessed against these feedback quality criteria:\n\n1. Accuracy\n   - Correctly identifies real strengths and weaknesses in the student's code.\n   - Does not invent errors when the code is correct.\n\n2. Specificity\n   - Refers to concrete aspects of the submitted code.\n   - Avoids overly generic feedback.\n\n3. Actionability\n   - Helps the student understand what to improve next.\n   - Gives clear and practical guidance.\n\n4. Understandability\n   - Uses plain language suitable for an introductory programming student.\n   - Avoids unnecessary technical complexity.\n\n5. Pedagogical usefulness\n   - Supports learning rather than only judging the answer.\n   - Prioritises the most important issue first.\n\nWrite feedback for the student. Focus first on the most important issue. \nAssess the student's code against the expected behaviour, test results, and criteria, not by requiring it to match the reference implementation exactly. \nIf the code passes all tests and solves the task correctly, do not invent a correctness problem. \nInstead, mention that the solution appears correct and suggest the most useful improvement. \nKeep the feedback to 3–5 sentences in plain language.",
+    "feedback_a": "Your implementation of the `count_vowels` function is correct and successfully counts both lowercase and uppercase vowels, as demonstrated by passing all the test cases. One area for improvement is code readability; consider using a string for the vowels instead of a list, as it simplifies your code slightly. Additionally, you might want to use the `count += 1` shorthand instead of `count = count + 1` for a cleaner look. Overall, great job on this task!",
+    "feedback_b": "The student's code correctly counts the number of vowels in a given string, and it handles both lowercase and uppercase vowels effectively. However, using a list to store the vowels is not necessary; a set would be more efficient for membership testing. Additionally, the code could be simplified by using a string of vowels instead of a list. Overall, the logic is sound, but there are opportunities for optimization and simplification.",
+    "ratings_a": {
+      "understandability": 5,
+      "accuracy": 5,
+      "specificity": 5,
+      "actionability": 5,
+      "usefulness": 5,
+      "pedagogical_value": 5
+    },
+    "ratings_b": {
+      "understandability": 4,
+      "accuracy": 5,
+      "specificity": 5,
+      "actionability": 4,
+      "usefulness": 4,
+      "pedagogical_value": 4
+    },
+    "preferred_feedback": "Feedback A",
+    "perceived_difference": "Feedback A gives simpler and more practical improvement suggestions, while Feedback B introduces a set, which may be unnecessary for this level.",
+    "missing_or_problematic": "Feedback B is technically correct, but the efficiency focus may be less relevant than readability for a small beginner task.",
+    "comment": "Feedback A balances correctness, readability, and small code improvements in a very student-friendly way."
+  },
+  {
+    "timestamp": "2026-04-29T01:08:51.865256",
+    "participant_id": "P183473",
+    "model_provider": "OpenAI API",
+    "model_name": "gpt-4o-mini-2024-07-18",
+    "model_temperature": 0.2,
+    "max_tokens": 350,
+    "task_id": "count_vowels",
+    "task_title": "Count the Vowels",
+    "task_description": "Write a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`",
+    "reference_implementation_rationale": "This reference implementation was selected because it is pedagogically simple, uses explicit control flow suitable for introductory programming, and clearly shows the expected behaviour of the task.\n\nIt is not treated as the only valid solution. Alternative implementations may be correct if they satisfy the expected behaviour, predefined functional test cases, and software assessment criteria.",
+    "reference_implementation": "def count_vowels(text):\n    vowels = \"aeiouAEIOU\"\n    count = 0\n    for character in text:\n        if character in vowels:\n            count += 1\n    return count",
+    "software_assessment_criteria": "The student's code should be assessed against these software assessment criteria:\n\n1. Correctness\n   - Defines a function named `count_vowels`.\n   - Accepts one string argument.\n   - Returns the number of vowels in the input string.\n   - Counts both lowercase and uppercase vowels.\n   - Handles strings with no vowels and empty strings.\n\n2. Code readability\n   - Uses clear and understandable control flow.\n   - Avoids unnecessary complexity.\n   - Uses meaningful variable names where possible.\n\n3. Robustness and task alignment\n   - Does not rely only on the exact example inputs.\n   - Returns the result instead of only printing it.\n   - Solves the task as specified.",
+    "feedback_quality_criteria": "The generated feedback should be assessed against these feedback quality criteria:\n\n1. Accuracy\n   - Correctly identifies real strengths and weaknesses in the student's code.\n   - Does not invent errors when the code is correct.\n\n2. Specificity\n   - Refers to concrete aspects of the submitted code.\n   - Avoids overly generic feedback.\n\n3. Actionability\n   - Helps the student understand what to improve next.\n   - Gives clear and practical guidance.\n\n4. Understandability\n   - Uses plain language suitable for an introductory programming student.\n   - Avoids unnecessary technical complexity.\n\n5. Pedagogical usefulness\n   - Supports learning rather than only judging the answer.\n   - Prioritises the most important issue first.",
+    "test_cases": [
+      {
+        "input": "hello",
+        "expected": 2,
+        "reason": "basic lowercase word"
+      },
+      {
+        "input": "APPLE",
+        "expected": 2,
+        "reason": "uppercase vowels must be counted"
+      },
+      {
+        "input": "xyz",
+        "expected": 0,
+        "reason": "word with no vowels"
+      },
+      {
+        "input": "Education",
+        "expected": 5,
+        "reason": "mixed-case realistic word"
+      },
+      {
+        "input": "",
+        "expected": 0,
+        "reason": "empty string edge case"
+      },
+      {
+        "input": "AeIoU",
+        "expected": 5,
+        "reason": "all vowels with mixed case"
+      }
+    ],
+    "student_code": "def count_vowels(text):\n    return sum(1 for char in text if char.lower() in \"aeiou\")",
+    "pre_feedback_reflection": "I think the solution should work and handles both lowercase and uppercase letters, but I am not sure if the one-line format is easy to read.",
+    "test_results": {
+      "status": "completed",
+      "summary": "Passed 6 of 6 tests.",
+      "passed": 6,
+      "total": 6,
+      "results": [
+        {
+          "input": "hello",
+          "expected": 2,
+          "actual": 2,
+          "passed": true,
+          "reason": "basic lowercase word"
+        },
+        {
+          "input": "APPLE",
+          "expected": 2,
+          "actual": 2,
+          "passed": true,
+          "reason": "uppercase vowels must be counted"
+        },
+        {
+          "input": "xyz",
+          "expected": 0,
+          "actual": 0,
+          "passed": true,
+          "reason": "word with no vowels"
+        },
+        {
+          "input": "Education",
+          "expected": 5,
+          "actual": 5,
+          "passed": true,
+          "reason": "mixed-case realistic word"
+        },
+        {
+          "input": "",
+          "expected": 0,
+          "actual": 0,
+          "passed": true,
+          "reason": "empty string edge case"
+        },
+        {
+          "input": "AeIoU",
+          "expected": 5,
+          "actual": 5,
+          "passed": true,
+          "reason": "all vowels with mixed case"
+        }
+      ]
+    },
+    "feedback_order": "enhanced_first",
+    "label_a": "criteria_enhanced_prompt",
+    "label_b": "baseline_minimal_prompt",
+    "baseline_prompt": "A student in an introductory programming course was given this task:\nWrite a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`\n\nThey submitted this code:\n\n```python\ndef count_vowels(text):\n    return sum(1 for char in text if char.lower() in \"aeiou\")\n```\n\nPlease provide feedback on the student's code. Keep it to 3–5 sentences in plain language.",
+    "enhanced_prompt": "A student in an introductory programming course was given this task:\nWrite a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`\n\nThey submitted this code:\n\n```python\ndef count_vowels(text):\n    return sum(1 for char in text if char.lower() in \"aeiou\")\n```\n\nPedagogical reference implementation:\nThis is one valid reference implementation. Do not treat it as the only correct solution.\nAlternative implementations may be correct if they satisfy the expected behaviour, test cases, and assessment criteria.\n\nRationale for this reference implementation:\nThis reference implementation was selected because it is pedagogically simple, uses explicit control flow suitable for introductory programming, and clearly shows the expected behaviour of the task.\n\nIt is not treated as the only valid solution. Alternative implementations may be correct if they satisfy the expected behaviour, predefined functional test cases, and software assessment criteria.\n\n```python\ndef count_vowels(text):\n    vowels = \"aeiouAEIOU\"\n    count = 0\n    for character in text:\n        if character in vowels:\n            count += 1\n    return count\n```\n\nFunctional test results for the student's code:\nThese test results define expected behaviour for the task, but they are not the only basis for feedback.\nPassed 6 of 6 tests.\n- PASS: input='hello', expected=2, actual=2. Reason: basic lowercase word\n- PASS: input='APPLE', expected=2, actual=2. Reason: uppercase vowels must be counted\n- PASS: input='xyz', expected=0, actual=0. Reason: word with no vowels\n- PASS: input='Education', expected=5, actual=5. Reason: mixed-case realistic word\n- PASS: input='', expected=0, actual=0. Reason: empty string edge case\n- PASS: input='AeIoU', expected=5, actual=5. Reason: all vowels with mixed case\n\nSoftware assessment criteria:\nThe student's code should be assessed against these software assessment criteria:\n\n1. Correctness\n   - Defines a function named `count_vowels`.\n   - Accepts one string argument.\n   - Returns the number of vowels in the input string.\n   - Counts both lowercase and uppercase vowels.\n   - Handles strings with no vowels and empty strings.\n\n2. Code readability\n   - Uses clear and understandable control flow.\n   - Avoids unnecessary complexity.\n   - Uses meaningful variable names where possible.\n\n3. Robustness and task alignment\n   - Does not rely only on the exact example inputs.\n   - Returns the result instead of only printing it.\n   - Solves the task as specified.\n\nFeedback quality criteria:\nThe generated feedback should be assessed against these feedback quality criteria:\n\n1. Accuracy\n   - Correctly identifies real strengths and weaknesses in the student's code.\n   - Does not invent errors when the code is correct.\n\n2. Specificity\n   - Refers to concrete aspects of the submitted code.\n   - Avoids overly generic feedback.\n\n3. Actionability\n   - Helps the student understand what to improve next.\n   - Gives clear and practical guidance.\n\n4. Understandability\n   - Uses plain language suitable for an introductory programming student.\n   - Avoids unnecessary technical complexity.\n\n5. Pedagogical usefulness\n   - Supports learning rather than only judging the answer.\n   - Prioritises the most important issue first.\n\nWrite feedback for the student. Focus first on the most important issue. \nAssess the student's code against the expected behaviour, test results, and criteria, not by requiring it to match the reference implementation exactly. \nIf the code passes all tests and solves the task correctly, do not invent a correctness problem. \nInstead, mention that the solution appears correct and suggest the most useful improvement. \nKeep the feedback to 3–5 sentences in plain language.",
+    "feedback_a": "Your implementation of the `count_vowels` function is correct and successfully counts both lowercase and uppercase vowels, as demonstrated by passing all test cases. One area for improvement is code readability; while your use of a generator expression is concise, it might be less clear for someone new to programming. Consider using a simple loop with a counter, as it can make your logic easier to follow. Overall, great job on completing the task!",
+    "feedback_b": "The student's code is well-written and effectively counts the number of vowels in a string, handling both lowercase and uppercase letters by converting each character to lowercase. Using a generator expression with `sum()` is a concise and efficient approach. However, it might be clearer to define the set of vowels as a variable, which can improve readability. Overall, the implementation is correct and meets the task requirements. Great job!",
+    "ratings_a": {
+      "understandability": 5,
+      "accuracy": 4,
+      "specificity": 4,
+      "actionability": 4,
+      "usefulness": 4,
+      "pedagogical_value": 4
+    },
+    "ratings_b": {
+      "understandability": 5,
+      "accuracy": 5,
+      "specificity": 5,
+      "actionability": 5,
+      "usefulness": 5,
+      "pedagogical_value": 5
+    },
+    "preferred_feedback": "Feedback B",
+    "perceived_difference": "Feedback B better recognizes that the current solution is already concise and efficient, while still suggesting a small readability improvement.",
+    "missing_or_problematic": "Feedback A suggests replacing the generator expression with a loop, which may reduce conciseness even though the current solution is already correct.",
+    "comment": "Feedback B gives a more balanced evaluation by respecting the existing Pythonic solution."
+  },
+  {
+    "timestamp": "2026-04-29T01:12:26.627899",
+    "participant_id": "P858163",
+    "model_provider": "OpenAI API",
+    "model_name": "gpt-4o-mini-2024-07-18",
+    "model_temperature": 0.2,
+    "max_tokens": 350,
+    "task_id": "count_vowels",
+    "task_title": "Count the Vowels",
+    "task_description": "Write a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`",
+    "reference_implementation_rationale": "This reference implementation was selected because it is pedagogically simple, uses explicit control flow suitable for introductory programming, and clearly shows the expected behaviour of the task.\n\nIt is not treated as the only valid solution. Alternative implementations may be correct if they satisfy the expected behaviour, predefined functional test cases, and software assessment criteria.",
+    "reference_implementation": "def count_vowels(text):\n    vowels = \"aeiouAEIOU\"\n    count = 0\n    for character in text:\n        if character in vowels:\n            count += 1\n    return count",
+    "software_assessment_criteria": "The student's code should be assessed against these software assessment criteria:\n\n1. Correctness\n   - Defines a function named `count_vowels`.\n   - Accepts one string argument.\n   - Returns the number of vowels in the input string.\n   - Counts both lowercase and uppercase vowels.\n   - Handles strings with no vowels and empty strings.\n\n2. Code readability\n   - Uses clear and understandable control flow.\n   - Avoids unnecessary complexity.\n   - Uses meaningful variable names where possible.\n\n3. Robustness and task alignment\n   - Does not rely only on the exact example inputs.\n   - Returns the result instead of only printing it.\n   - Solves the task as specified.",
+    "feedback_quality_criteria": "The generated feedback should be assessed against these feedback quality criteria:\n\n1. Accuracy\n   - Correctly identifies real strengths and weaknesses in the student's code.\n   - Does not invent errors when the code is correct.\n\n2. Specificity\n   - Refers to concrete aspects of the submitted code.\n   - Avoids overly generic feedback.\n\n3. Actionability\n   - Helps the student understand what to improve next.\n   - Gives clear and practical guidance.\n\n4. Understandability\n   - Uses plain language suitable for an introductory programming student.\n   - Avoids unnecessary technical complexity.\n\n5. Pedagogical usefulness\n   - Supports learning rather than only judging the answer.\n   - Prioritises the most important issue first.",
+    "test_cases": [
+      {
+        "input": "hello",
+        "expected": 2,
+        "reason": "basic lowercase word"
+      },
+      {
+        "input": "APPLE",
+        "expected": 2,
+        "reason": "uppercase vowels must be counted"
+      },
+      {
+        "input": "xyz",
+        "expected": 0,
+        "reason": "word with no vowels"
+      },
+      {
+        "input": "Education",
+        "expected": 5,
+        "reason": "mixed-case realistic word"
+      },
+      {
+        "input": "",
+        "expected": 0,
+        "reason": "empty string edge case"
+      },
+      {
+        "input": "AeIoU",
+        "expected": 5,
+        "reason": "all vowels with mixed case"
+      }
+    ],
+    "student_code": "def count_vowels(text):\n    vowels = \"aeiouAEIOU\"\n    count = 0\n    for character in text:\n        if character in vowels:\n            count += 1\n    return count",
+    "pre_feedback_reflection": "I think the solution should work for both lowercase and uppercase vowels, but there may be a simpler way to write it.",
+    "test_results": {
+      "status": "completed",
+      "summary": "Passed 6 of 6 tests.",
+      "passed": 6,
+      "total": 6,
+      "results": [
+        {
+          "input": "hello",
+          "expected": 2,
+          "actual": 2,
+          "passed": true,
+          "reason": "basic lowercase word"
+        },
+        {
+          "input": "APPLE",
+          "expected": 2,
+          "actual": 2,
+          "passed": true,
+          "reason": "uppercase vowels must be counted"
+        },
+        {
+          "input": "xyz",
+          "expected": 0,
+          "actual": 0,
+          "passed": true,
+          "reason": "word with no vowels"
+        },
+        {
+          "input": "Education",
+          "expected": 5,
+          "actual": 5,
+          "passed": true,
+          "reason": "mixed-case realistic word"
+        },
+        {
+          "input": "",
+          "expected": 0,
+          "actual": 0,
+          "passed": true,
+          "reason": "empty string edge case"
+        },
+        {
+          "input": "AeIoU",
+          "expected": 5,
+          "actual": 5,
+          "passed": true,
+          "reason": "all vowels with mixed case"
+        }
+      ]
+    },
+    "feedback_order": "baseline_first",
+    "label_a": "baseline_minimal_prompt",
+    "label_b": "criteria_enhanced_prompt",
+    "baseline_prompt": "A student in an introductory programming course was given this task:\nWrite a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`\n\nThey submitted this code:\n\n```python\ndef count_vowels(text):\n    vowels = \"aeiouAEIOU\"\n    count = 0\n    for character in text:\n        if character in vowels:\n            count += 1\n    return count\n```\n\nPlease provide feedback on the student's code. Keep it to 3–5 sentences in plain language.",
+    "enhanced_prompt": "A student in an introductory programming course was given this task:\nWrite a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`\n\nThey submitted this code:\n\n```python\ndef count_vowels(text):\n    vowels = \"aeiouAEIOU\"\n    count = 0\n    for character in text:\n        if character in vowels:\n            count += 1\n    return count\n```\n\nPedagogical reference implementation:\nThis is one valid reference implementation. Do not treat it as the only correct solution.\nAlternative implementations may be correct if they satisfy the expected behaviour, test cases, and assessment criteria.\n\nRationale for this reference implementation:\nThis reference implementation was selected because it is pedagogically simple, uses explicit control flow suitable for introductory programming, and clearly shows the expected behaviour of the task.\n\nIt is not treated as the only valid solution. Alternative implementations may be correct if they satisfy the expected behaviour, predefined functional test cases, and software assessment criteria.\n\n```python\ndef count_vowels(text):\n    vowels = \"aeiouAEIOU\"\n    count = 0\n    for character in text:\n        if character in vowels:\n            count += 1\n    return count\n```\n\nFunctional test results for the student's code:\nThese test results define expected behaviour for the task, but they are not the only basis for feedback.\nPassed 6 of 6 tests.\n- PASS: input='hello', expected=2, actual=2. Reason: basic lowercase word\n- PASS: input='APPLE', expected=2, actual=2. Reason: uppercase vowels must be counted\n- PASS: input='xyz', expected=0, actual=0. Reason: word with no vowels\n- PASS: input='Education', expected=5, actual=5. Reason: mixed-case realistic word\n- PASS: input='', expected=0, actual=0. Reason: empty string edge case\n- PASS: input='AeIoU', expected=5, actual=5. Reason: all vowels with mixed case\n\nSoftware assessment criteria:\nThe student's code should be assessed against these software assessment criteria:\n\n1. Correctness\n   - Defines a function named `count_vowels`.\n   - Accepts one string argument.\n   - Returns the number of vowels in the input string.\n   - Counts both lowercase and uppercase vowels.\n   - Handles strings with no vowels and empty strings.\n\n2. Code readability\n   - Uses clear and understandable control flow.\n   - Avoids unnecessary complexity.\n   - Uses meaningful variable names where possible.\n\n3. Robustness and task alignment\n   - Does not rely only on the exact example inputs.\n   - Returns the result instead of only printing it.\n   - Solves the task as specified.\n\nFeedback quality criteria:\nThe generated feedback should be assessed against these feedback quality criteria:\n\n1. Accuracy\n   - Correctly identifies real strengths and weaknesses in the student's code.\n   - Does not invent errors when the code is correct.\n\n2. Specificity\n   - Refers to concrete aspects of the submitted code.\n   - Avoids overly generic feedback.\n\n3. Actionability\n   - Helps the student understand what to improve next.\n   - Gives clear and practical guidance.\n\n4. Understandability\n   - Uses plain language suitable for an introductory programming student.\n   - Avoids unnecessary technical complexity.\n\n5. Pedagogical usefulness\n   - Supports learning rather than only judging the answer.\n   - Prioritises the most important issue first.\n\nWrite feedback for the student. Focus first on the most important issue. \nAssess the student's code against the expected behaviour, test results, and criteria, not by requiring it to match the reference implementation exactly. \nIf the code passes all tests and solves the task correctly, do not invent a correctness problem. \nInstead, mention that the solution appears correct and suggest the most useful improvement. \nKeep the feedback to 3–5 sentences in plain language.",
+    "feedback_a": "The student's code is well-written and correctly counts the number of vowels in a given string, handling both lowercase and uppercase letters effectively. The use of a string to define the vowels is a clear and efficient approach. The loop iterates through each character in the input, which is a straightforward way to check for vowels. Overall, the function works as intended and meets the requirements of the task. Great job!",
+    "feedback_b": "Your implementation of the `count_vowels` function is correct and successfully counts both lowercase and uppercase vowels, as demonstrated by passing all the provided test cases. One area for improvement is to enhance code readability by using a more descriptive variable name instead of `text`, such as `input_string`, which can make it clearer what the function is processing. Overall, great job on this task! Keep up the good work!",
+    "ratings_a": {
+      "understandability": 5,
+      "accuracy": 5,
+      "specificity": 4,
+      "actionability": 4,
+      "usefulness": 4,
+      "pedagogical_value": 5
+    },
+    "ratings_b": {
+      "understandability": 4,
+      "accuracy": 3,
+      "specificity": 3,
+      "actionability": 3,
+      "usefulness": 3,
+      "pedagogical_value": 3
+    },
+    "preferred_feedback": "Feedback A",
+    "perceived_difference": "Feedback A appropriately recognizes the solution as complete without forcing unnecessary improvements.",
+    "missing_or_problematic": "Feedback B suggests changing variable names even though the current names are already clear and appropriate.",
+    "comment": "For a correct reference solution, minimal feedback may be more appropriate than suggesting very minor stylistic changes."
+  },
+  {
+    "timestamp": "2026-04-29T01:37:05.152842",
+    "participant_id": "P487765",
+    "model_provider": "OpenAI API",
+    "model_name": "gpt-4o-mini-2024-07-18",
+    "model_temperature": 0.2,
+    "max_tokens": 350,
+    "task_id": "count_vowels",
+    "task_title": "Count the Vowels",
+    "task_description": "Write a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`",
+    "reference_implementation_rationale": "This reference implementation was selected because it is pedagogically simple, uses explicit control flow suitable for introductory programming, and clearly shows the expected behaviour of the task.\n\nIt is not treated as the only valid solution. Alternative implementations may be correct if they satisfy the expected behaviour, predefined functional test cases, and software assessment criteria.",
+    "reference_implementation": "def count_vowels(text):\n    vowels = \"aeiouAEIOU\"\n    count = 0\n    for character in text:\n        if character in vowels:\n            count += 1\n    return count",
+    "software_assessment_criteria": "The student's code should be assessed against these software assessment criteria:\n\n1. Correctness\n   - Defines a function named `count_vowels`.\n   - Accepts one string argument.\n   - Returns the number of vowels in the input string.\n   - Counts both lowercase and uppercase vowels.\n   - Handles strings with no vowels and empty strings.\n\n2. Code readability\n   - Uses clear and understandable control flow.\n   - Avoids unnecessary complexity.\n   - Uses meaningful variable names where possible.\n\n3. Robustness and task alignment\n   - Does not rely only on the exact example inputs.\n   - Returns the result instead of only printing it.\n   - Solves the task as specified.",
+    "feedback_quality_criteria": "The generated feedback should be assessed against these feedback quality criteria:\n\n1. Accuracy\n   - Correctly identifies real strengths and weaknesses in the student's code.\n   - Does not invent errors when the code is correct.\n\n2. Specificity\n   - Refers to concrete aspects of the submitted code.\n   - Avoids overly generic feedback.\n\n3. Actionability\n   - Helps the student understand what to improve next.\n   - Gives clear and practical guidance.\n\n4. Understandability\n   - Uses plain language suitable for an introductory programming student.\n   - Avoids unnecessary technical complexity.\n\n5. Pedagogical usefulness\n   - Supports learning rather than only judging the answer.\n   - Prioritises the most important issue first.",
+    "test_cases": [
+      {
+        "input": "hello",
+        "expected": 2,
+        "reason": "basic lowercase word"
+      },
+      {
+        "input": "APPLE",
+        "expected": 2,
+        "reason": "uppercase vowels must be counted"
+      },
+      {
+        "input": "xyz",
+        "expected": 0,
+        "reason": "word with no vowels"
+      },
+      {
+        "input": "Education",
+        "expected": 5,
+        "reason": "mixed-case realistic word"
+      },
+      {
+        "input": "",
+        "expected": 0,
+        "reason": "empty string edge case"
+      },
+      {
+        "input": "AeIoU",
+        "expected": 5,
+        "reason": "all vowels with mixed case"
+      }
+    ],
+    "student_code": "def count_vowels(text):\n    count = 0\n    for char in text:\n        if char in \"aeiouAEIOU\":\n            count += 1\n    print(count)",
+    "pre_feedback_reflection": "I think it counts correctly, but I am unsure whether print is the correct way to output the answer in a function.",
+    "test_results": {
+      "status": "failed",
+      "summary": "Could not run tests: Extra data: line 2 column 1 (char 2)",
+      "passed": 0,
+      "total": 6,
+      "results": []
+    },
+    "feedback_order": "baseline_first",
+    "label_a": "baseline_minimal_prompt",
+    "label_b": "criteria_enhanced_prompt",
+    "baseline_prompt": "A student in an introductory programming course was given this task:\nWrite a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`\n\nThey submitted this code:\n\n```python\ndef count_vowels(text):\n    count = 0\n    for char in text:\n        if char in \"aeiouAEIOU\":\n            count += 1\n    print(count)\n```\n\nPlease provide feedback on the student's code. Keep it to 3–5 sentences in plain language.",
+    "enhanced_prompt": "A student in an introductory programming course was given this task:\nWrite a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`\n\nThey submitted this code:\n\n```python\ndef count_vowels(text):\n    count = 0\n    for char in text:\n        if char in \"aeiouAEIOU\":\n            count += 1\n    print(count)\n```\n\nPedagogical reference implementation:\nThis is one valid reference implementation. Do not treat it as the only correct solution.\nAlternative implementations may be correct if they satisfy the expected behaviour, test cases, and assessment criteria.\n\nRationale for this reference implementation:\nThis reference implementation was selected because it is pedagogically simple, uses explicit control flow suitable for introductory programming, and clearly shows the expected behaviour of the task.\n\nIt is not treated as the only valid solution. Alternative implementations may be correct if they satisfy the expected behaviour, predefined functional test cases, and software assessment criteria.\n\n```python\ndef count_vowels(text):\n    vowels = \"aeiouAEIOU\"\n    count = 0\n    for character in text:\n        if character in vowels:\n            count += 1\n    return count\n```\n\nFunctional test results for the student's code:\nThese test results define expected behaviour for the task, but they are not the only basis for feedback.\nCould not run tests: Extra data: line 2 column 1 (char 2)\n\nSoftware assessment criteria:\nThe student's code should be assessed against these software assessment criteria:\n\n1. Correctness\n   - Defines a function named `count_vowels`.\n   - Accepts one string argument.\n   - Returns the number of vowels in the input string.\n   - Counts both lowercase and uppercase vowels.\n   - Handles strings with no vowels and empty strings.\n\n2. Code readability\n   - Uses clear and understandable control flow.\n   - Avoids unnecessary complexity.\n   - Uses meaningful variable names where possible.\n\n3. Robustness and task alignment\n   - Does not rely only on the exact example inputs.\n   - Returns the result instead of only printing it.\n   - Solves the task as specified.\n\nFeedback quality criteria:\nThe generated feedback should be assessed against these feedback quality criteria:\n\n1. Accuracy\n   - Correctly identifies real strengths and weaknesses in the student's code.\n   - Does not invent errors when the code is correct.\n\n2. Specificity\n   - Refers to concrete aspects of the submitted code.\n   - Avoids overly generic feedback.\n\n3. Actionability\n   - Helps the student understand what to improve next.\n   - Gives clear and practical guidance.\n\n4. Understandability\n   - Uses plain language suitable for an introductory programming student.\n   - Avoids unnecessary technical complexity.\n\n5. Pedagogical usefulness\n   - Supports learning rather than only judging the answer.\n   - Prioritises the most important issue first.\n\nWrite feedback for the student. Focus first on the most important issue. \nAssess the student's code against the expected behaviour, test results, and criteria, not by requiring it to match the reference implementation exactly. \nIf the code passes all tests and solves the task correctly, do not invent a correctness problem. \nInstead, mention that the solution appears correct and suggest the most useful improvement. \nKeep the feedback to 3–5 sentences in plain language.",
+    "feedback_a": "The student's code correctly counts the number of vowels in a given string, which is the main requirement of the task. However, instead of using `print(count)`, the function should return the count using `return count` so that the result can be used elsewhere in the program. Additionally, using a set for the vowels (like `{'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'}`) could improve performance slightly, especially for longer strings. Overall, the logic is sound, but the return statement is essential for proper function usage.",
+    "feedback_b": "Your function `count_vowels` correctly counts the number of vowels in a string, which is great! However, instead of printing the count, you should return it so that the function can be used more flexibly in other parts of a program. Additionally, consider using a variable to store the vowels, as it makes the code easier to read and maintain. Overall, you're on the right track—just make that small adjustment to improve your function!",
+    "ratings_a": {
+      "understandability": 4,
+      "accuracy": 3,
+      "specificity": 5,
+      "actionability": 4,
+      "usefulness": 4,
+      "pedagogical_value": 4
+    },
+    "ratings_b": {
+      "understandability": 5,
+      "accuracy": 5,
+      "specificity": 5,
+      "actionability": 5,
+      "usefulness": 5,
+      "pedagogical_value": 5
+    },
+    "preferred_feedback": "Feedback B",
+    "perceived_difference": "Feedback B focuses more clearly on the main issue by explaining why returning a value is important in a function.",
+    "missing_or_problematic": "Feedback A introduces performance suggestions even though the main issue is simply replacing print with return.",
+    "comment": "Feedback B provides stronger learning support by linking the correction to how functions are used in larger programs."
+  },
+  {
+    "timestamp": "2026-04-29T01:39:10.737478",
+    "participant_id": "P657525",
+    "model_provider": "OpenAI API",
+    "model_name": "gpt-4o-mini-2024-07-18",
+    "model_temperature": 0.2,
+    "max_tokens": 350,
+    "task_id": "count_vowels",
+    "task_title": "Count the Vowels",
+    "task_description": "Write a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`",
+    "reference_implementation_rationale": "This reference implementation was selected because it is pedagogically simple, uses explicit control flow suitable for introductory programming, and clearly shows the expected behaviour of the task.\n\nIt is not treated as the only valid solution. Alternative implementations may be correct if they satisfy the expected behaviour, predefined functional test cases, and software assessment criteria.",
+    "reference_implementation": "def count_vowels(text):\n    vowels = \"aeiouAEIOU\"\n    count = 0\n    for character in text:\n        if character in vowels:\n            count += 1\n    return count",
+    "software_assessment_criteria": "The student's code should be assessed against these software assessment criteria:\n\n1. Correctness\n   - Defines a function named `count_vowels`.\n   - Accepts one string argument.\n   - Returns the number of vowels in the input string.\n   - Counts both lowercase and uppercase vowels.\n   - Handles strings with no vowels and empty strings.\n\n2. Code readability\n   - Uses clear and understandable control flow.\n   - Avoids unnecessary complexity.\n   - Uses meaningful variable names where possible.\n\n3. Robustness and task alignment\n   - Does not rely only on the exact example inputs.\n   - Returns the result instead of only printing it.\n   - Solves the task as specified.",
+    "feedback_quality_criteria": "The generated feedback should be assessed against these feedback quality criteria:\n\n1. Accuracy\n   - Correctly identifies real strengths and weaknesses in the student's code.\n   - Does not invent errors when the code is correct.\n\n2. Specificity\n   - Refers to concrete aspects of the submitted code.\n   - Avoids overly generic feedback.\n\n3. Actionability\n   - Helps the student understand what to improve next.\n   - Gives clear and practical guidance.\n\n4. Understandability\n   - Uses plain language suitable for an introductory programming student.\n   - Avoids unnecessary technical complexity.\n\n5. Pedagogical usefulness\n   - Supports learning rather than only judging the answer.\n   - Prioritises the most important issue first.",
+    "test_cases": [
+      {
+        "input": "hello",
+        "expected": 2,
+        "reason": "basic lowercase word"
+      },
+      {
+        "input": "APPLE",
+        "expected": 2,
+        "reason": "uppercase vowels must be counted"
+      },
+      {
+        "input": "xyz",
+        "expected": 0,
+        "reason": "word with no vowels"
+      },
+      {
+        "input": "Education",
+        "expected": 5,
+        "reason": "mixed-case realistic word"
+      },
+      {
+        "input": "",
+        "expected": 0,
+        "reason": "empty string edge case"
+      },
+      {
+        "input": "AeIoU",
+        "expected": 5,
+        "reason": "all vowels with mixed case"
+      }
+    ],
+    "student_code": "def count_vowels(text):\n    count = 0\n    for char in text:\n        if char in \"aeiouAEIOU\":\n            count += 1\n        return count",
+    "pre_feedback_reflection": "I think it should count vowels, but I am unsure whether returning inside the loop affects the result.",
+    "test_results": {
+      "status": "completed",
+      "summary": "Passed 1 of 6 tests.",
+      "passed": 1,
+      "total": 6,
+      "results": [
+        {
+          "input": "hello",
+          "expected": 2,
+          "actual": 0,
+          "passed": false,
+          "reason": "basic lowercase word"
+        },
+        {
+          "input": "APPLE",
+          "expected": 2,
+          "actual": 1,
+          "passed": false,
+          "reason": "uppercase vowels must be counted"
+        },
+        {
+          "input": "xyz",
+          "expected": 0,
+          "actual": 0,
+          "passed": true,
+          "reason": "word with no vowels"
+        },
+        {
+          "input": "Education",
+          "expected": 5,
+          "actual": 1,
+          "passed": false,
+          "reason": "mixed-case realistic word"
+        },
+        {
+          "input": "",
+          "expected": 0,
+          "actual": null,
+          "passed": false,
+          "reason": "empty string edge case"
+        },
+        {
+          "input": "AeIoU",
+          "expected": 5,
+          "actual": 1,
+          "passed": false,
+          "reason": "all vowels with mixed case"
+        }
+      ]
+    },
+    "feedback_order": "baseline_first",
+    "label_a": "baseline_minimal_prompt",
+    "label_b": "criteria_enhanced_prompt",
+    "baseline_prompt": "A student in an introductory programming course was given this task:\nWrite a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`\n\nThey submitted this code:\n\n```python\ndef count_vowels(text):\n    count = 0\n    for char in text:\n        if char in \"aeiouAEIOU\":\n            count += 1\n        return count\n```\n\nPlease provide feedback on the student's code. Keep it to 3–5 sentences in plain language.",
+    "enhanced_prompt": "A student in an introductory programming course was given this task:\nWrite a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`\n\nThey submitted this code:\n\n```python\ndef count_vowels(text):\n    count = 0\n    for char in text:\n        if char in \"aeiouAEIOU\":\n            count += 1\n        return count\n```\n\nPedagogical reference implementation:\nThis is one valid reference implementation. Do not treat it as the only correct solution.\nAlternative implementations may be correct if they satisfy the expected behaviour, test cases, and assessment criteria.\n\nRationale for this reference implementation:\nThis reference implementation was selected because it is pedagogically simple, uses explicit control flow suitable for introductory programming, and clearly shows the expected behaviour of the task.\n\nIt is not treated as the only valid solution. Alternative implementations may be correct if they satisfy the expected behaviour, predefined functional test cases, and software assessment criteria.\n\n```python\ndef count_vowels(text):\n    vowels = \"aeiouAEIOU\"\n    count = 0\n    for character in text:\n        if character in vowels:\n            count += 1\n    return count\n```\n\nFunctional test results for the student's code:\nThese test results define expected behaviour for the task, but they are not the only basis for feedback.\nPassed 1 of 6 tests.\n- FAIL: input='hello', expected=2, actual=0. Reason: basic lowercase word\n- FAIL: input='APPLE', expected=2, actual=1. Reason: uppercase vowels must be counted\n- PASS: input='xyz', expected=0, actual=0. Reason: word with no vowels\n- FAIL: input='Education', expected=5, actual=1. Reason: mixed-case realistic word\n- FAIL: input='', expected=0, actual=None. Reason: empty string edge case\n- FAIL: input='AeIoU', expected=5, actual=1. Reason: all vowels with mixed case\n\nSoftware assessment criteria:\nThe student's code should be assessed against these software assessment criteria:\n\n1. Correctness\n   - Defines a function named `count_vowels`.\n   - Accepts one string argument.\n   - Returns the number of vowels in the input string.\n   - Counts both lowercase and uppercase vowels.\n   - Handles strings with no vowels and empty strings.\n\n2. Code readability\n   - Uses clear and understandable control flow.\n   - Avoids unnecessary complexity.\n   - Uses meaningful variable names where possible.\n\n3. Robustness and task alignment\n   - Does not rely only on the exact example inputs.\n   - Returns the result instead of only printing it.\n   - Solves the task as specified.\n\nFeedback quality criteria:\nThe generated feedback should be assessed against these feedback quality criteria:\n\n1. Accuracy\n   - Correctly identifies real strengths and weaknesses in the student's code.\n   - Does not invent errors when the code is correct.\n\n2. Specificity\n   - Refers to concrete aspects of the submitted code.\n   - Avoids overly generic feedback.\n\n3. Actionability\n   - Helps the student understand what to improve next.\n   - Gives clear and practical guidance.\n\n4. Understandability\n   - Uses plain language suitable for an introductory programming student.\n   - Avoids unnecessary technical complexity.\n\n5. Pedagogical usefulness\n   - Supports learning rather than only judging the answer.\n   - Prioritises the most important issue first.\n\nWrite feedback for the student. Focus first on the most important issue. \nAssess the student's code against the expected behaviour, test results, and criteria, not by requiring it to match the reference implementation exactly. \nIf the code passes all tests and solves the task correctly, do not invent a correctness problem. \nInstead, mention that the solution appears correct and suggest the most useful improvement. \nKeep the feedback to 3–5 sentences in plain language.",
+    "feedback_a": "The student's code has a small indentation issue that causes the `return count` statement to be inside the for loop, which means the function will return after checking just the first character of the string. To fix this, the `return count` line should be aligned with the `for` loop so that it only executes after all characters have been checked. Additionally, using a set for the vowels could make the membership test slightly more efficient. Overall, the logic for counting vowels is correct, but the placement of the return statement needs adjustment.",
+    "feedback_b": "Your function `count_vowels` has a critical issue with the placement of the `return` statement. Currently, it returns the count after checking just the first character of the string, which is why it fails most of the tests. To fix this, move the `return count` line outside of the `for` loop so that it counts all characters in the string before returning the total. Additionally, consider using a variable for the vowels to improve readability. Once you make these changes, your function should work correctly for all test cases.",
+    "ratings_a": {
+      "understandability": 4,
+      "accuracy": 5,
+      "specificity": 5,
+      "actionability": 4,
+      "usefulness": 4,
+      "pedagogical_value": 4
+    },
+    "ratings_b": {
+      "understandability": 5,
+      "accuracy": 5,
+      "specificity": 5,
+      "actionability": 5,
+      "usefulness": 5,
+      "pedagogical_value": 5
+    },
+    "preferred_feedback": "Feedback B",
+    "perceived_difference": "Feedback B explains more clearly that the function stops after the first character because the return statement is inside the loop.",
+    "missing_or_problematic": "Feedback A introduces an efficiency suggestion that is unrelated to the main control-flow issue.",
+    "comment": "Feedback B gives stronger instructional focus by directly linking the bug to failed test behaviour."
+  },
+  {
+    "timestamp": "2026-04-29T01:41:59.632811",
+    "participant_id": "P750501",
+    "model_provider": "OpenAI API",
+    "model_name": "gpt-4o-mini-2024-07-18",
+    "model_temperature": 0.2,
+    "max_tokens": 350,
+    "task_id": "count_vowels",
+    "task_title": "Count the Vowels",
+    "task_description": "Write a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`",
+    "reference_implementation_rationale": "This reference implementation was selected because it is pedagogically simple, uses explicit control flow suitable for introductory programming, and clearly shows the expected behaviour of the task.\n\nIt is not treated as the only valid solution. Alternative implementations may be correct if they satisfy the expected behaviour, predefined functional test cases, and software assessment criteria.",
+    "reference_implementation": "def count_vowels(text):\n    vowels = \"aeiouAEIOU\"\n    count = 0\n    for character in text:\n        if character in vowels:\n            count += 1\n    return count",
+    "software_assessment_criteria": "The student's code should be assessed against these software assessment criteria:\n\n1. Correctness\n   - Defines a function named `count_vowels`.\n   - Accepts one string argument.\n   - Returns the number of vowels in the input string.\n   - Counts both lowercase and uppercase vowels.\n   - Handles strings with no vowels and empty strings.\n\n2. Code readability\n   - Uses clear and understandable control flow.\n   - Avoids unnecessary complexity.\n   - Uses meaningful variable names where possible.\n\n3. Robustness and task alignment\n   - Does not rely only on the exact example inputs.\n   - Returns the result instead of only printing it.\n   - Solves the task as specified.",
+    "feedback_quality_criteria": "The generated feedback should be assessed against these feedback quality criteria:\n\n1. Accuracy\n   - Correctly identifies real strengths and weaknesses in the student's code.\n   - Does not invent errors when the code is correct.\n\n2. Specificity\n   - Refers to concrete aspects of the submitted code.\n   - Avoids overly generic feedback.\n\n3. Actionability\n   - Helps the student understand what to improve next.\n   - Gives clear and practical guidance.\n\n4. Understandability\n   - Uses plain language suitable for an introductory programming student.\n   - Avoids unnecessary technical complexity.\n\n5. Pedagogical usefulness\n   - Supports learning rather than only judging the answer.\n   - Prioritises the most important issue first.",
+    "test_cases": [
+      {
+        "input": "hello",
+        "expected": 2,
+        "reason": "basic lowercase word"
+      },
+      {
+        "input": "APPLE",
+        "expected": 2,
+        "reason": "uppercase vowels must be counted"
+      },
+      {
+        "input": "xyz",
+        "expected": 0,
+        "reason": "word with no vowels"
+      },
+      {
+        "input": "Education",
+        "expected": 5,
+        "reason": "mixed-case realistic word"
+      },
+      {
+        "input": "",
+        "expected": 0,
+        "reason": "empty string edge case"
+      },
+      {
+        "input": "AeIoU",
+        "expected": 5,
+        "reason": "all vowels with mixed case"
+      }
+    ],
+    "student_code": "def count_vowels(text):\n    vowels = \"aeiouy\"\n    return sum(1 for char in text.lower() if char in vowels)",
+    "pre_feedback_reflection": "I think it should count vowels correctly, but I am not fully sure if there are any edge cases I have missed.",
+    "test_results": {
+      "status": "completed",
+      "summary": "Passed 5 of 6 tests.",
+      "passed": 5,
+      "total": 6,
+      "results": [
+        {
+          "input": "hello",
+          "expected": 2,
+          "actual": 2,
+          "passed": true,
+          "reason": "basic lowercase word"
+        },
+        {
+          "input": "APPLE",
+          "expected": 2,
+          "actual": 2,
+          "passed": true,
+          "reason": "uppercase vowels must be counted"
+        },
+        {
+          "input": "xyz",
+          "expected": 0,
+          "actual": 1,
+          "passed": false,
+          "reason": "word with no vowels"
+        },
+        {
+          "input": "Education",
+          "expected": 5,
+          "actual": 5,
+          "passed": true,
+          "reason": "mixed-case realistic word"
+        },
+        {
+          "input": "",
+          "expected": 0,
+          "actual": 0,
+          "passed": true,
+          "reason": "empty string edge case"
+        },
+        {
+          "input": "AeIoU",
+          "expected": 5,
+          "actual": 5,
+          "passed": true,
+          "reason": "all vowels with mixed case"
+        }
+      ]
+    },
+    "feedback_order": "baseline_first",
+    "label_a": "baseline_minimal_prompt",
+    "label_b": "criteria_enhanced_prompt",
+    "baseline_prompt": "A student in an introductory programming course was given this task:\nWrite a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`\n\nThey submitted this code:\n\n```python\ndef count_vowels(text):\n    vowels = \"aeiouy\"\n    return sum(1 for char in text.lower() if char in vowels)\n```\n\nPlease provide feedback on the student's code. Keep it to 3–5 sentences in plain language.",
+    "enhanced_prompt": "A student in an introductory programming course was given this task:\nWrite a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`\n\nThey submitted this code:\n\n```python\ndef count_vowels(text):\n    vowels = \"aeiouy\"\n    return sum(1 for char in text.lower() if char in vowels)\n```\n\nPedagogical reference implementation:\nThis is one valid reference implementation. Do not treat it as the only correct solution.\nAlternative implementations may be correct if they satisfy the expected behaviour, test cases, and assessment criteria.\n\nRationale for this reference implementation:\nThis reference implementation was selected because it is pedagogically simple, uses explicit control flow suitable for introductory programming, and clearly shows the expected behaviour of the task.\n\nIt is not treated as the only valid solution. Alternative implementations may be correct if they satisfy the expected behaviour, predefined functional test cases, and software assessment criteria.\n\n```python\ndef count_vowels(text):\n    vowels = \"aeiouAEIOU\"\n    count = 0\n    for character in text:\n        if character in vowels:\n            count += 1\n    return count\n```\n\nFunctional test results for the student's code:\nThese test results define expected behaviour for the task, but they are not the only basis for feedback.\nPassed 5 of 6 tests.\n- PASS: input='hello', expected=2, actual=2. Reason: basic lowercase word\n- PASS: input='APPLE', expected=2, actual=2. Reason: uppercase vowels must be counted\n- FAIL: input='xyz', expected=0, actual=1. Reason: word with no vowels\n- PASS: input='Education', expected=5, actual=5. Reason: mixed-case realistic word\n- PASS: input='', expected=0, actual=0. Reason: empty string edge case\n- PASS: input='AeIoU', expected=5, actual=5. Reason: all vowels with mixed case\n\nSoftware assessment criteria:\nThe student's code should be assessed against these software assessment criteria:\n\n1. Correctness\n   - Defines a function named `count_vowels`.\n   - Accepts one string argument.\n   - Returns the number of vowels in the input string.\n   - Counts both lowercase and uppercase vowels.\n   - Handles strings with no vowels and empty strings.\n\n2. Code readability\n   - Uses clear and understandable control flow.\n   - Avoids unnecessary complexity.\n   - Uses meaningful variable names where possible.\n\n3. Robustness and task alignment\n   - Does not rely only on the exact example inputs.\n   - Returns the result instead of only printing it.\n   - Solves the task as specified.\n\nFeedback quality criteria:\nThe generated feedback should be assessed against these feedback quality criteria:\n\n1. Accuracy\n   - Correctly identifies real strengths and weaknesses in the student's code.\n   - Does not invent errors when the code is correct.\n\n2. Specificity\n   - Refers to concrete aspects of the submitted code.\n   - Avoids overly generic feedback.\n\n3. Actionability\n   - Helps the student understand what to improve next.\n   - Gives clear and practical guidance.\n\n4. Understandability\n   - Uses plain language suitable for an introductory programming student.\n   - Avoids unnecessary technical complexity.\n\n5. Pedagogical usefulness\n   - Supports learning rather than only judging the answer.\n   - Prioritises the most important issue first.\n\nWrite feedback for the student. Focus first on the most important issue. \nAssess the student's code against the expected behaviour, test results, and criteria, not by requiring it to match the reference implementation exactly. \nIf the code passes all tests and solves the task correctly, do not invent a correctness problem. \nInstead, mention that the solution appears correct and suggest the most useful improvement. \nKeep the feedback to 3–5 sentences in plain language.",
+    "feedback_a": "The student's code is mostly correct and effectively counts the number of vowels in a string, but it has a small issue: it only includes lowercase vowels and the letter 'y'. To improve it, the student should include both uppercase and lowercase vowels in the `vowels` string, like this: `vowels = \"aeiouAEIOU\"`. Additionally, the inclusion of 'y' as a vowel can be debated, so it might be better to exclude it unless specified otherwise. Overall, the logic using a generator expression and `sum` is a good approach!",
+    "feedback_b": "Your function `count_vowels` is almost correct, but it has a small issue that caused it to fail one of the tests. The problem is that you are counting 'y' as a vowel, which is not typically included in the standard list of vowels (a, e, i, o, u). To fix this, you should change the `vowels` string to only include \"aeiou\" (and their uppercase counterparts). This will ensure that your function accurately counts the vowels as expected. Overall, your code is clear and easy to understand, which is great! Keep up the good work!",
+    "ratings_a": {
+      "understandability": 4,
+      "accuracy": 4,
+      "specificity": 4,
+      "actionability": 4,
+      "usefulness": 4,
+      "pedagogical_value": 4
+    },
+    "ratings_b": {
+      "understandability": 5,
+      "accuracy": 4,
+      "specificity": 5,
+      "actionability": 5,
+      "usefulness": 4,
+      "pedagogical_value": 4
+    },
+    "preferred_feedback": "Feedback A",
+    "perceived_difference": "Feedback A gives a more balanced explanation by acknowledging that the inclusion of y can depend on interpretation.",
+    "missing_or_problematic": "Feedback A mentions uppercase vowels even though text.lower() already handles uppercase input.",
+    "comment": "Both feedback versions identify the same main issue, but Feedback A provides slightly more nuanced reasoning."
+  },
+  {
+    "timestamp": "2026-04-29T01:44:20.961693",
+    "participant_id": "P151011",
+    "model_provider": "OpenAI API",
+    "model_name": "gpt-4o-mini-2024-07-18",
+    "model_temperature": 0.2,
+    "max_tokens": 350,
+    "task_id": "count_vowels",
+    "task_title": "Count the Vowels",
+    "task_description": "Write a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`",
+    "reference_implementation_rationale": "This reference implementation was selected because it is pedagogically simple, uses explicit control flow suitable for introductory programming, and clearly shows the expected behaviour of the task.\n\nIt is not treated as the only valid solution. Alternative implementations may be correct if they satisfy the expected behaviour, predefined functional test cases, and software assessment criteria.",
+    "reference_implementation": "def count_vowels(text):\n    vowels = \"aeiouAEIOU\"\n    count = 0\n    for character in text:\n        if character in vowels:\n            count += 1\n    return count",
+    "software_assessment_criteria": "The student's code should be assessed against these software assessment criteria:\n\n1. Correctness\n   - Defines a function named `count_vowels`.\n   - Accepts one string argument.\n   - Returns the number of vowels in the input string.\n   - Counts both lowercase and uppercase vowels.\n   - Handles strings with no vowels and empty strings.\n\n2. Code readability\n   - Uses clear and understandable control flow.\n   - Avoids unnecessary complexity.\n   - Uses meaningful variable names where possible.\n\n3. Robustness and task alignment\n   - Does not rely only on the exact example inputs.\n   - Returns the result instead of only printing it.\n   - Solves the task as specified.",
+    "feedback_quality_criteria": "The generated feedback should be assessed against these feedback quality criteria:\n\n1. Accuracy\n   - Correctly identifies real strengths and weaknesses in the student's code.\n   - Does not invent errors when the code is correct.\n\n2. Specificity\n   - Refers to concrete aspects of the submitted code.\n   - Avoids overly generic feedback.\n\n3. Actionability\n   - Helps the student understand what to improve next.\n   - Gives clear and practical guidance.\n\n4. Understandability\n   - Uses plain language suitable for an introductory programming student.\n   - Avoids unnecessary technical complexity.\n\n5. Pedagogical usefulness\n   - Supports learning rather than only judging the answer.\n   - Prioritises the most important issue first.",
+    "test_cases": [
+      {
+        "input": "hello",
+        "expected": 2,
+        "reason": "basic lowercase word"
+      },
+      {
+        "input": "APPLE",
+        "expected": 2,
+        "reason": "uppercase vowels must be counted"
+      },
+      {
+        "input": "xyz",
+        "expected": 0,
+        "reason": "word with no vowels"
+      },
+      {
+        "input": "Education",
+        "expected": 5,
+        "reason": "mixed-case realistic word"
+      },
+      {
+        "input": "",
+        "expected": 0,
+        "reason": "empty string edge case"
+      },
+      {
+        "input": "AeIoU",
+        "expected": 5,
+        "reason": "all vowels with mixed case"
+      }
+    ],
+    "student_code": "def count_vowels(text):\n    count = 0\n    for char in text:\n        if char in \"aeiouAEIOU\":\n            count += 1\n        return count",
+    "pre_feedback_reflection": "I think it counts both uppercase and lowercase vowels, but I am unsure if the function checks the whole string before returning.",
+    "test_results": {
+      "status": "completed",
+      "summary": "Passed 1 of 6 tests.",
+      "passed": 1,
+      "total": 6,
+      "results": [
+        {
+          "input": "hello",
+          "expected": 2,
+          "actual": 0,
+          "passed": false,
+          "reason": "basic lowercase word"
+        },
+        {
+          "input": "APPLE",
+          "expected": 2,
+          "actual": 1,
+          "passed": false,
+          "reason": "uppercase vowels must be counted"
+        },
+        {
+          "input": "xyz",
+          "expected": 0,
+          "actual": 0,
+          "passed": true,
+          "reason": "word with no vowels"
+        },
+        {
+          "input": "Education",
+          "expected": 5,
+          "actual": 1,
+          "passed": false,
+          "reason": "mixed-case realistic word"
+        },
+        {
+          "input": "",
+          "expected": 0,
+          "actual": null,
+          "passed": false,
+          "reason": "empty string edge case"
+        },
+        {
+          "input": "AeIoU",
+          "expected": 5,
+          "actual": 1,
+          "passed": false,
+          "reason": "all vowels with mixed case"
+        }
+      ]
+    },
+    "feedback_order": "baseline_first",
+    "label_a": "baseline_minimal_prompt",
+    "label_b": "criteria_enhanced_prompt",
+    "baseline_prompt": "A student in an introductory programming course was given this task:\nWrite a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`\n\nThey submitted this code:\n\n```python\ndef count_vowels(text):\n    count = 0\n    for char in text:\n        if char in \"aeiouAEIOU\":\n            count += 1\n        return count\n```\n\nPlease provide feedback on the student's code. Keep it to 3–5 sentences in plain language.",
+    "enhanced_prompt": "A student in an introductory programming course was given this task:\nWrite a Python function called `count_vowels` that takes a string as input and returns the number of vowels in the string.\n\nCount both lowercase and uppercase vowels.\n\nExamples:\n- `count_vowels(\"hello\")` → `2`\n- `count_vowels(\"APPLE\")` → `2`\n- `count_vowels(\"xyz\")` → `0`\n- `count_vowels(\"Education\")` → `5`\n\nThey submitted this code:\n\n```python\ndef count_vowels(text):\n    count = 0\n    for char in text:\n        if char in \"aeiouAEIOU\":\n            count += 1\n        return count\n```\n\nPedagogical reference implementation:\nThis is one valid reference implementation. Do not treat it as the only correct solution.\nAlternative implementations may be correct if they satisfy the expected behaviour, test cases, and assessment criteria.\n\nRationale for this reference implementation:\nThis reference implementation was selected because it is pedagogically simple, uses explicit control flow suitable for introductory programming, and clearly shows the expected behaviour of the task.\n\nIt is not treated as the only valid solution. Alternative implementations may be correct if they satisfy the expected behaviour, predefined functional test cases, and software assessment criteria.\n\n```python\ndef count_vowels(text):\n    vowels = \"aeiouAEIOU\"\n    count = 0\n    for character in text:\n        if character in vowels:\n            count += 1\n    return count\n```\n\nFunctional test results for the student's code:\nThese test results define expected behaviour for the task, but they are not the only basis for feedback.\nPassed 1 of 6 tests.\n- FAIL: input='hello', expected=2, actual=0. Reason: basic lowercase word\n- FAIL: input='APPLE', expected=2, actual=1. Reason: uppercase vowels must be counted\n- PASS: input='xyz', expected=0, actual=0. Reason: word with no vowels\n- FAIL: input='Education', expected=5, actual=1. Reason: mixed-case realistic word\n- FAIL: input='', expected=0, actual=None. Reason: empty string edge case\n- FAIL: input='AeIoU', expected=5, actual=1. Reason: all vowels with mixed case\n\nSoftware assessment criteria:\nThe student's code should be assessed against these software assessment criteria:\n\n1. Correctness\n   - Defines a function named `count_vowels`.\n   - Accepts one string argument.\n   - Returns the number of vowels in the input string.\n   - Counts both lowercase and uppercase vowels.\n   - Handles strings with no vowels and empty strings.\n\n2. Code readability\n   - Uses clear and understandable control flow.\n   - Avoids unnecessary complexity.\n   - Uses meaningful variable names where possible.\n\n3. Robustness and task alignment\n   - Does not rely only on the exact example inputs.\n   - Returns the result instead of only printing it.\n   - Solves the task as specified.\n\nFeedback quality criteria:\nThe generated feedback should be assessed against these feedback quality criteria:\n\n1. Accuracy\n   - Correctly identifies real strengths and weaknesses in the student's code.\n   - Does not invent errors when the code is correct.\n\n2. Specificity\n   - Refers to concrete aspects of the submitted code.\n   - Avoids overly generic feedback.\n\n3. Actionability\n   - Helps the student understand what to improve next.\n   - Gives clear and practical guidance.\n\n4. Understandability\n   - Uses plain language suitable for an introductory programming student.\n   - Avoids unnecessary technical complexity.\n\n5. Pedagogical usefulness\n   - Supports learning rather than only judging the answer.\n   - Prioritises the most important issue first.\n\nWrite feedback for the student. Focus first on the most important issue. \nAssess the student's code against the expected behaviour, test results, and criteria, not by requiring it to match the reference implementation exactly. \nIf the code passes all tests and solves the task correctly, do not invent a correctness problem. \nInstead, mention that the solution appears correct and suggest the most useful improvement. \nKeep the feedback to 3–5 sentences in plain language.",
+    "feedback_a": "The student's code has a small indentation issue that causes the `return count` statement to be inside the `for` loop, which means the function will return after checking just the first character of the string. To fix this, the `return count` line should be aligned with the `for` loop so that it executes after all characters have been checked. Additionally, the code correctly counts both lowercase and uppercase vowels, which is good. Overall, just adjusting the indentation will make the function work as intended.",
+    "feedback_b": "Your function `count_vowels` has a significant issue with the placement of the `return` statement. Currently, it returns the count after checking only the first character of the string, which is why it fails to count vowels correctly. To fix this, move the `return count` statement outside of the `for` loop so that it returns the total count after checking all characters in the string. Additionally, consider using a variable to store the vowels, which can make your code clearer. Once you make these changes, your function should work as expected!",
+    "ratings_a": {
+      "understandability": 5,
+      "accuracy": 5,
+      "specificity": 5,
+      "actionability": 5,
+      "usefulness": 5,
+      "pedagogical_value": 5
+    },
+    "ratings_b": {
+      "understandability": 4,
+      "accuracy": 5,
+      "specificity": 5,
+      "actionability": 4,
+      "usefulness": 4,
+      "pedagogical_value": 4
+    },
+    "preferred_feedback": "Feedback A",
+    "perceived_difference": "Feedback A is more focused on the indentation problem and explains the main issue without adding unnecessary suggestions.",
+    "missing_or_problematic": "Feedback B adds an extra suggestion about storing vowels that is not necessary for solving the current bug.",
+    "comment": "Feedback A also positively acknowledges that uppercase and lowercase vowels are already handled correctly."
+  }
+]

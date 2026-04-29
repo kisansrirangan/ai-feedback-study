@@ -1,0 +1,32 @@
+[
+  {
+    "input": "hello",
+    "expected": 2,
+    "reason": "basic lowercase word"
+  },
+  {
+    "input": "APPLE",
+    "expected": 2,
+    "reason": "uppercase vowels must be counted"
+  },
+  {
+    "input": "xyz",
+    "expected": 0,
+    "reason": "word with no vowels"
+  },
+  {
+    "input": "Education",
+    "expected": 5,
+    "reason": "mixed-case realistic word"
+  },
+  {
+    "input": "",
+    "expected": 0,
+    "reason": "empty string edge case"
+  },
+  {
+    "input": "AeIoU",
+    "expected": 5,
+    "reason": "all vowels with mixed case"
+  }
+]

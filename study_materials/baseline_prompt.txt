@@ -1,0 +1,15 @@
+A student in an introductory programming course was given this task:
+
+{task}
+
+They submitted this code:
+
+```python
+{code}
+
+```
+
+Write feedback directly to the student using "you" and "your code".
+Do not refer to the learner as "the student".
+Focus on the most important issue first.
+Keep the feedback to 3–5 sentences in plain language.
