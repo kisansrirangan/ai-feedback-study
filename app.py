@@ -23,6 +23,8 @@ from typing import Any
 
 import streamlit as st
 from openai import OpenAI
+import gspread
+from google.oauth2.service_account import Credentials
 
 
 # ------------------------------------------------------------
@@ -281,20 +283,41 @@ def load_existing_records() -> list[dict[str, Any]]:
         return []
 
 
+def get_google_worksheet():
+    scopes = [
+        "https://www.googleapis.com/auth/spreadsheets",
+        "https://www.googleapis.com/auth/drive",
+    ]
+
+    credentials = Credentials.from_service_account_info(
+        dict(st.secrets["gcp_service_account"]),
+        scopes=scopes,
+    )
+
+    client = gspread.authorize(credentials)
+    spreadsheet = client.open_by_key(st.secrets["GOOGLE_SHEET_ID"])
+    return spreadsheet.sheet1
+
+
 def save_record(record: dict[str, Any]) -> None:
-    records = load_existing_records()
-    records.append(record)
+    try:
+        worksheet = get_google_worksheet()
 
-    backup_file = DATA_FILE.with_suffix(".backup.json")
+        flat_record = {
+            key: json.dumps(value, ensure_ascii=False) if isinstance(value, (dict, list)) else value
+            for key, value in record.items()
+        }
 
-    if DATA_FILE.exists():
-        backup_file.write_text(
-            DATA_FILE.read_text(encoding="utf-8"),
-            encoding="utf-8"
-        )
+        existing_values = worksheet.get_all_values()
 
-    with DATA_FILE.open("w", encoding="utf-8") as file:
-        json.dump(records, file, indent=2, ensure_ascii=False)
+        if not existing_values:
+            worksheet.append_row(list(flat_record.keys()))
+
+        worksheet.append_row(list(flat_record.values()))
+
+    except Exception as error:
+        st.error(f"Google Sheets error: {error}")
+        st.stop()
 
 
 def initialize_session_state() -> None:
