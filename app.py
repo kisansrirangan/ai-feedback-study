@@ -1,13 +1,6 @@
 """
 Prototype: AI Feedback Quality Study
 Master's thesis - baseline vs. criteria-enhanced prompting
-
-Run locally:
-    python3 -m streamlit run app.py
-
-The app requires an OpenAI API key, either:
-1. as an environment variable: OPENAI_API_KEY
-2. or in .streamlit/secrets.toml
 """
 
 from __future__ import annotations
@@ -37,14 +30,38 @@ MAX_TOKENS = 350
 
 DATA_PHASE = "main_study"
 PROMPT_VERSION = "v2"
-APP_VERSION = "2026-04-29"
+APP_VERSION = "2026-05-03"
 
 DATA_FILE = Path("responses.json")
 MATERIALS_DIR = Path("study_materials")
 
-TASK_ID = "count_vowels"
-TASK_TITLE = "Count the Vowels"
-TASK_PLACEHOLDER = "def count_vowels(text):\n    ..."
+
+# ------------------------------------------------------------
+# Task setup
+# ------------------------------------------------------------
+
+TASKS = {
+    "count_vowels": {
+        "title": "Count the Vowels",
+        "function_name": "count_vowels",
+        "placeholder": "def count_vowels(text):\n    ...",
+        "task_description": "task_description.md",
+        "reference_implementation": "reference_implementation.py",
+        "reference_rationale": "reference_implementation_rationale.md",
+        "software_criteria": "software_assessment_criteria.md",
+        "test_cases": "test_cases.json",
+    },
+    "find_max": {
+        "title": "Find the Maximum",
+        "function_name": "find_max",
+        "placeholder": "def find_max(numbers):\n    ...",
+        "task_description": "task_description_find_max.md",
+        "reference_implementation": "reference_implementation_find_max.py",
+        "reference_rationale": "reference_implementation_rationale_find_max.md",
+        "software_criteria": "software_assessment_criteria_find_max.md",
+        "test_cases": "test_cases_find_max.json",
+    },
+}
 
 
 # ------------------------------------------------------------
@@ -65,14 +82,6 @@ def read_json_file(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-TASK_DESCRIPTION = read_text_file(MATERIALS_DIR / "task_description.md")
-REFERENCE_IMPLEMENTATION = read_text_file(MATERIALS_DIR / "reference_implementation.py")
-REFERENCE_IMPLEMENTATION_RATIONALE = read_text_file(
-    MATERIALS_DIR / "reference_implementation_rationale.md"
-)
-SOFTWARE_ASSESSMENT_CRITERIA = read_text_file(
-    MATERIALS_DIR / "software_assessment_criteria.md"
-)
 FEEDBACK_QUALITY_CRITERIA = read_text_file(
     MATERIALS_DIR / "feedback_quality_criteria.md"
 )
@@ -80,7 +89,6 @@ BASELINE_PROMPT_TEMPLATE = read_text_file(MATERIALS_DIR / "baseline_prompt.txt")
 CRITERIA_ENHANCED_PROMPT_TEMPLATE = read_text_file(
     MATERIALS_DIR / "criteria_enhanced_prompt.txt"
 )
-TEST_CASES = read_json_file(MATERIALS_DIR / "test_cases.json")
 
 
 # ------------------------------------------------------------
@@ -110,6 +118,22 @@ LIKERT_CAPTIONS = [
 # Helper functions
 # ------------------------------------------------------------
 
+def get_task_materials(task_id: str) -> dict[str, Any]:
+    task = TASKS[task_id]
+
+    return {
+        "task_id": task_id,
+        "task_title": task["title"],
+        "function_name": task["function_name"],
+        "placeholder": task["placeholder"],
+        "task_description": read_text_file(MATERIALS_DIR / task["task_description"]),
+        "reference_implementation": read_text_file(MATERIALS_DIR / task["reference_implementation"]),
+        "reference_rationale": read_text_file(MATERIALS_DIR / task["reference_rationale"]),
+        "software_criteria": read_text_file(MATERIALS_DIR / task["software_criteria"]),
+        "test_cases": read_json_file(MATERIALS_DIR / task["test_cases"]),
+    }
+
+
 def get_openai_client() -> OpenAI:
     api_key = os.environ.get("OPENAI_API_KEY")
 
@@ -120,10 +144,7 @@ def get_openai_client() -> OpenAI:
             api_key = None
 
     if not api_key:
-        st.error(
-            "OpenAI API key not found. Add it either as an environment variable "
-            "or in `.streamlit/secrets.toml`."
-        )
+        st.error("OpenAI API key not found.")
         st.stop()
 
     return OpenAI(api_key=api_key)
@@ -138,18 +159,19 @@ def generate_feedback(client: OpenAI, prompt: str) -> str:
             max_tokens=MAX_TOKENS,
         )
         return response.choices[0].message.content.strip()
-
     except Exception as error:
-        return (
-            "The feedback could not be generated at the moment. "
-            f"Error: {error}"
-        )
+        return f"The feedback could not be generated at the moment. Error: {error}"
 
 
-def run_student_tests(student_code: str) -> dict[str, Any]:
+def run_student_tests(
+    student_code: str,
+    function_name: str,
+    test_cases: list[dict[str, Any]],
+) -> dict[str, Any]:
     test_payload = {
         "student_code": student_code,
-        "test_cases": TEST_CASES,
+        "function_name": function_name,
+        "test_cases": test_cases,
     }
 
     runner_code = r'''
@@ -158,6 +180,7 @@ import sys
 
 payload = json.loads(sys.stdin.read())
 student_code = payload["student_code"]
+function_name = payload["function_name"]
 test_cases = payload["test_cases"]
 
 namespace = {}
@@ -165,12 +188,12 @@ results = []
 
 try:
     exec(student_code, namespace)
-    function = namespace.get("count_vowels")
+    function = namespace.get(function_name)
 
     if function is None or not callable(function):
         output = {
             "status": "failed",
-            "summary": "No callable function named count_vowels was defined.",
+            "summary": f"No callable function named {function_name} was defined.",
             "passed": 0,
             "total": len(test_cases),
             "results": [],
@@ -234,7 +257,7 @@ print(json.dumps(output, ensure_ascii=False))
                 "status": "failed",
                 "summary": completed.stderr.strip() or "The test runner failed.",
                 "passed": 0,
-                "total": len(TEST_CASES),
+                "total": len(test_cases),
                 "results": [],
             }
 
@@ -245,16 +268,7 @@ print(json.dumps(output, ensure_ascii=False))
             "status": "failed",
             "summary": "The submitted code timed out during testing.",
             "passed": 0,
-            "total": len(TEST_CASES),
-            "results": [],
-        }
-
-    except Exception as error:
-        return {
-            "status": "failed",
-            "summary": f"Could not run tests: {error}",
-            "passed": 0,
-            "total": len(TEST_CASES),
+            "total": len(test_cases),
             "results": [],
         }
 
@@ -270,17 +284,6 @@ def format_test_results_for_prompt(test_results: dict[str, Any]) -> str:
         )
 
     return "\n".join(lines)
-
-
-def load_existing_records() -> list[dict[str, Any]]:
-    if not DATA_FILE.exists():
-        return []
-
-    try:
-        with DATA_FILE.open("r", encoding="utf-8") as file:
-            return json.load(file)
-    except (json.JSONDecodeError, OSError):
-        return []
 
 
 def get_google_worksheet():
@@ -332,12 +335,18 @@ def initialize_session_state() -> None:
     if "participant_id" not in st.session_state:
         st.session_state.participant_id = f"P{random.randint(100000, 999999)}"
 
+    if "task_id" not in st.session_state:
+        st.session_state.task_id = random.choice(list(TASKS.keys()))
 
-def likert_radio(label: str, key: str) -> int:
+    if "task_materials" not in st.session_state:
+        st.session_state.task_materials = get_task_materials(st.session_state.task_id)
+
+
+def likert_radio(label: str, key: str) -> int | None:
     return st.radio(
         label,
         options=LIKERT_OPTIONS,
-        index=2,
+        index=None,
         horizontal=True,
         captions=LIKERT_CAPTIONS,
         key=key,
@@ -350,6 +359,8 @@ def likert_radio(label: str, key: str) -> int:
 
 st.set_page_config(page_title="AI Feedback Study", layout="centered")
 initialize_session_state()
+
+task = st.session_state.task_materials
 
 
 # ------------------------------------------------------------
@@ -368,14 +379,6 @@ if st.session_state.step == "intro":
         3. Reflect briefly on your own solution before receiving feedback  
         4. Receive two feedback versions on your code  
         5. Evaluate both feedback versions in a short questionnaire  
-
-        The study compares two feedback conditions generated by the same AI model:
-
-        - **Feedback condition 1:** minimal prompt without explicit assessment criteria  
-        - **Feedback condition 2:** criteria-enhanced prompt with a pedagogical reference implementation, functional test results, software assessment criteria, and feedback quality criteria  
-
-        The same model and settings are used for both feedback conditions. The order of the two feedback versions is randomized.
-        Your participation is anonymous.
         """
     )
 
@@ -385,14 +388,14 @@ if st.session_state.step == "intro":
 
 
 elif st.session_state.step == "task":
-    st.title(TASK_TITLE)
-    st.markdown(TASK_DESCRIPTION)
+    st.title(task["task_title"])
+    st.markdown(task["task_description"])
     st.markdown("---")
 
     student_code = st.text_area(
         "Write your Python code here:",
         height=260,
-        placeholder=TASK_PLACEHOLDER,
+        placeholder=task["placeholder"],
     )
 
     if st.button("Submit code"):
@@ -406,7 +409,7 @@ elif st.session_state.step == "task":
 
 elif st.session_state.step == "reflection":
     st.title("Before receiving feedback")
-    st.markdown(f"**Task:** {TASK_TITLE}")
+    st.markdown(f"**Task:** {task['task_title']}")
 
     st.markdown("**Your submitted code:**")
     st.code(st.session_state.student_code, language="python")
@@ -430,21 +433,25 @@ elif st.session_state.step == "generating":
         client = get_openai_client()
         student_code = st.session_state.student_code
 
-        test_results = run_student_tests(student_code)
+        test_results = run_student_tests(
+            student_code=student_code,
+            function_name=task["function_name"],
+            test_cases=task["test_cases"],
+        )
         st.session_state.test_results = test_results
 
         baseline_prompt = BASELINE_PROMPT_TEMPLATE.format(
-            task=TASK_DESCRIPTION,
+            task=task["task_description"],
             code=student_code,
         )
 
         enhanced_prompt = CRITERIA_ENHANCED_PROMPT_TEMPLATE.format(
-            task=TASK_DESCRIPTION,
+            task=task["task_description"],
             code=student_code,
-            reference_rationale=REFERENCE_IMPLEMENTATION_RATIONALE,
-            reference_solution=REFERENCE_IMPLEMENTATION,
+            reference_rationale=task["reference_rationale"],
+            reference_solution=task["reference_implementation"],
             test_results=format_test_results_for_prompt(test_results),
-            software_criteria=SOFTWARE_ASSESSMENT_CRITERIA,
+            software_criteria=task["software_criteria"],
             feedback_criteria=FEEDBACK_QUALITY_CRITERIA,
         )
 
@@ -473,7 +480,7 @@ elif st.session_state.step == "generating":
 
 elif st.session_state.step == "feedback":
     st.title("Your feedback")
-    st.markdown(f"**Task:** {TASK_TITLE}")
+    st.markdown(f"**Task:** {task['task_title']}")
 
     st.markdown("**Your code:**")
     st.code(st.session_state.student_code, language="python")
@@ -495,15 +502,14 @@ elif st.session_state.step == "feedback":
 
 elif st.session_state.step == "questionnaire":
     st.title("Evaluate the feedback")
-    st.markdown(f"**Task:** {TASK_TITLE}")
+    st.markdown(f"**Task:** {task['task_title']}")
 
     st.markdown(
         """
-        Please evaluate the two feedback versions as **formative feedback**.
+        Please evaluate each feedback version against the following **feedback quality characteristics**.
 
-        Formative feedback means feedback intended to help a student understand their current solution and improve their learning, not simply to assign a grade.
+        Consider whether the feedback is understandable, accurate, specific, actionable, useful, and pedagogically helpful for learning.
 
-        Rate each feedback version on the following statements.  
         **1 = Strongly disagree** and **5 = Strongly agree.**
         """
     )
@@ -530,6 +536,7 @@ elif st.session_state.step == "questionnaire":
         "Overall, which feedback version would better support the student’s learning and improvement?",
         ["Feedback A", "Feedback B", "No clear difference"],
         horizontal=True,
+        index=None,
     )
 
     perceived_difference = st.text_area(
@@ -538,7 +545,7 @@ elif st.session_state.step == "questionnaire":
     )
 
     missing_or_problematic = st.text_area(
-        "Was anything missing, misleading, too vague, too complex, or potentially unhelpful in either feedback version?",
+        "Were there any aspects of either feedback version that were particularly helpful, constructive, unclear, misleading, too vague, too complex, or potentially unhelpful?",
         height=120,
     )
 
@@ -548,6 +555,14 @@ elif st.session_state.step == "questionnaire":
     )
 
     if st.button("Submit evaluation"):
+        if any(value is None for value in ratings_a.values()) or any(value is None for value in ratings_b.values()):
+            st.warning("Please rate all feedback statements before submitting.")
+            st.stop()
+
+        if preferred_feedback is None:
+            st.warning("Please select an overall feedback preference before submitting.")
+            st.stop()
+
         record = {
             "timestamp": datetime.now().isoformat(),
             "participant_id": st.session_state.participant_id,
@@ -558,14 +573,15 @@ elif st.session_state.step == "questionnaire":
             "model_name": MODEL_NAME,
             "model_temperature": MODEL_TEMPERATURE,
             "max_tokens": MAX_TOKENS,
-            "task_id": TASK_ID,
-            "task_title": TASK_TITLE,
-            "task_description": TASK_DESCRIPTION,
-            "reference_implementation_rationale": REFERENCE_IMPLEMENTATION_RATIONALE,
-            "reference_implementation": REFERENCE_IMPLEMENTATION,
-            "software_assessment_criteria": SOFTWARE_ASSESSMENT_CRITERIA,
+            "task_id": task["task_id"],
+            "task_title": task["task_title"],
+            "function_name": task["function_name"],
+            "task_description": task["task_description"],
+            "reference_implementation_rationale": task["reference_rationale"],
+            "reference_implementation": task["reference_implementation"],
+            "software_assessment_criteria": task["software_criteria"],
             "feedback_quality_criteria": FEEDBACK_QUALITY_CRITERIA,
-            "test_cases": TEST_CASES,
+            "test_cases": task["test_cases"],
             "student_code": st.session_state.student_code,
             "pre_feedback_reflection": st.session_state.get("pre_feedback_reflection", ""),
             "test_results": st.session_state.test_results,
@@ -587,6 +603,7 @@ elif st.session_state.step == "questionnaire":
         save_record(record)
         st.session_state.step = "done"
         st.rerun()
+
 
 elif st.session_state.step == "done":
     st.title("Thank you")
