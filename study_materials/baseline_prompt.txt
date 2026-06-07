@@ -6,7 +6,6 @@ They submitted this code:
 
 ```python
 {code}
-
 ```
 
 Write feedback directly to the student using "you" and "your code".
