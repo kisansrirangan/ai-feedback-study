@@ -73,6 +73,7 @@ http://localhost:8501
 * Responses are automatically stored in `responses.json`
 * Pilot data is stored separately in `responses_pilot.json`
 * The app uses the current prompt version defined in `app.py`
+* The deployed version of this app used the Google Sheets API to store responses remotely. To replicate this, you will need a Google Cloud Platform service account with the Sheets API enabled, and you will need to add the credentials JSON as a Streamlit secret. Without this configuration, the app stores responses locally in `responses.json` instead.
 
 ## If Streamlit is missing
 
